@@ -2,7 +2,13 @@
 
 ## Развертывание проекта
 
-(Версии npm, node [a relative link](./package.json) - секция `engines`).
+### Либо запустить контейнер с помощью Docker
+
+Выполнить в корне проекта команду:
+`docker-compose up`
+
+### Либо с помощью node, npm
+([Версии npm, node](./package.json) - секция `engines`).
 
 Run `npm i`.
 
