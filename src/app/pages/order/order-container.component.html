@@ -1,0 +1,10 @@
+<app-order
+  #orderComponent
+  [cart]="cart"
+  [cartPrice]="cartPrice"
+  [cartDiscount]="cartDiscount"
+  [cartProductCount]="cartProductCount"
+  (emitDeleteFromCart)="deleteFromCart($event)"
+  (emitProductCountChange)="productCountChange($event)"
+  (emitSubmitOrderForm)="handlerSubmitOrderForm($event)"
+></app-order>

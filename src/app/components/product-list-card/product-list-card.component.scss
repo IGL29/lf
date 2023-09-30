@@ -1,0 +1,13 @@
+.products-list {
+  position: relative;
+  display: grid;
+  grid-gap: 60px 30px;
+  grid-template-columns: repeat(auto-fill, minmax(208px, 1fr));
+
+  &__loader {
+    position: absolute;
+    left: 50%;
+    margin: 0 auto;
+    transform: translateX(-50%);
+  }
+}

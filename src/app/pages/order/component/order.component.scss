@@ -1,0 +1,327 @@
+@import 'colors';
+@import 'media';
+
+.order {
+  &__container {
+    padding-bottom: 200px;
+  }
+
+  &__loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    max-width: 200px;
+    transform: translate(-50%, -50%);
+  }
+
+  &__bg {
+    &-top {
+      pointer-events: none;
+
+      &::after {
+        position: absolute;
+        top: -175px;
+        right: -285px;
+        z-index: -1;
+        width: 869px;
+        height: 585px;
+        background-image: image-set(
+          url('/assets/images/pages/order/pink-flowers-bg.webp') type('image/webp'),
+          url('/assets/images/pages/order/pink-flowers-bg.png')
+        );
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        transform: rotate(355deg);
+        content: '';
+        pointer-events: none;
+      }
+
+      &::before {
+        position: absolute;
+        top: -125px;
+        left: -219px;
+        z-index: -1;
+        width: 346px;
+        height: 340px;
+        background-image: image-set(
+          url('/assets/images/pages/order/pink-flowers-bg.webp') type('image/webp'),
+          url('/assets/images/pages/order/pink-flowers-bg.png')
+        );
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        transform: rotateZ(119deg);
+        content: '';
+        pointer-events: none;
+      }
+    }
+
+    &-bottom {
+      &::after {
+        position: fixed;
+        right: -161px;
+        bottom: -36px;
+        z-index: -1;
+        width: 677px;
+        height: 685px;
+        background-image: url('/assets/images/pages/shared/pink-color-bg.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100% 100%;
+        transform: rotate(17deg);
+        opacity: 0.7;
+        content: '';
+        pointer-events: none;
+      }
+
+      &::before {
+        position: fixed;
+        bottom: -130px;
+        left: 236px;
+        z-index: -1;
+        width: 1034px;
+        height: 782px;
+        background-image: url('/assets/images/pages/shared/green-color-bg.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100% 100%;
+        transform: rotate(82deg);
+        opacity: 0.3;
+        content: '';
+        pointer-events: none;
+      }
+    }
+  }
+
+  &::after {
+    position: absolute;
+    top: -170px;
+    right: -186px;
+    z-index: -2;
+    width: 724px;
+    height: 702px;
+    background-image: url('/assets/images/pages/shared/pink-color-bg.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    transform: rotate(17deg);
+    opacity: 0.9;
+    content: '';
+    pointer-events: none;
+  }
+
+  &::before {
+    position: absolute;
+    top: -314px;
+    left: -284px;
+    z-index: -1;
+    width: 625px;
+    height: 640px;
+    background-image: url('/assets/images/pages/shared/green-color-bg.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    transform: rotate(116deg);
+    opacity: 0.6;
+    content: '';
+    pointer-events: none;
+  }
+}
+
+.hero {
+  &__breadcrumbs {
+    margin-bottom: 60px;
+  }
+}
+
+.content {
+  &__container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__order-form {
+    flex: 0 1 60%;
+    margin-right: 100px;
+  }
+
+  &__cart {
+    position: sticky;
+    top: 80px;
+    align-self: flex-start;
+  }
+}
+
+.order-form {
+  &__title {
+    margin-bottom: 40px;
+  }
+
+  &__fieldset {
+    &:not(:last-of-type) {
+      margin-bottom: 60px;
+    }
+  }
+
+  &__legend {
+    margin-bottom: 20px;
+  }
+
+  &__label-text {
+    margin-bottom: 4px;
+  }
+
+  &__label {
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  &__fieldset-promocode {
+    margin-bottom: 60px;
+  }
+
+  &__total-description {
+    margin-bottom: 30px;
+  }
+
+  &__btn {
+    width: 100%;
+    max-width: 255px;
+    margin-bottom: 10px;
+  }
+
+  &__policy {
+    width: 100%;
+    max-width: 360px;
+  }
+
+  &__delivery-fields-wrapper {
+    padding: 20px 1px 1px;
+    overflow: hidden;
+  }
+
+  &__radio-wrapper {
+    &:not(:last-of-type) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__promocode {
+    max-width: 350px;
+  }
+}
+
+.policy {
+  font-weight: 300;
+  font-size: 11px;
+}
+
+.total-description {
+  &__wrapper-price {
+    margin-bottom: 10px;
+  }
+
+  &__paragraph-1 {
+    margin-bottom: 10px;
+  }
+}
+
+.wrapper-price {
+  display: flex;
+  justify-content: space-between;
+
+  &__paragraph-1 {
+    margin-right: 20px;
+    font-weight: 700;
+    font-size: 30px;
+  }
+
+  &__paragraph-2 {
+    font-weight: 700;
+    font-size: 30px;
+  }
+}
+
+.cart {
+  &__title {
+    margin-bottom: 45px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  &__list {
+    max-height: 500px;
+    margin-bottom: 20px;
+    padding-right: 10px;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  &__text {
+    font-weight: 700;
+    font-size: 14px;
+  }
+}
+
+.select {
+  padding: 17px;
+  color: $color-6;
+  font-size: 14px;
+  font-family: 'Oswald', sans-serif;
+  background-color: transparent;
+  border: 1px solid $color-6;
+  cursor: pointer;
+  appearance: none;
+}
+
+.select::-ms-expand {
+  display: none;
+}
+
+@media (max-width: $ui-md) {
+  .content {
+    &__order-form {
+      margin-right: 40px;
+    }
+
+    &__cart {
+      flex-basis: 40%;
+    }
+  }
+}
+
+@media (max-width: $ui-md) {
+  .content {
+    &__order-form {
+      flex-basis: 100%;
+      margin-right: 0;
+    }
+
+    &__cart {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: $ui-xs) {
+  .order {
+    &__bg {
+      &-bottom {
+        &::after {
+          opacity: 0.3;
+        }
+
+        &::before {
+          right: -342px;
+          bottom: -402px;
+          left: 0;
+          width: 688px;
+          height: 782px;
+          opacity: 0.2;
+        }
+      }
+    }
+  }
+}

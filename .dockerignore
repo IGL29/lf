@@ -1,0 +1,15 @@
+.angular
+.git
+.husky
+.storybook
+__tests__
+coverage
+dist
+node_modules
+.editorconfig
+.gitignore
+.prettierrc.json
+.stylelintrc
+docker-compose.yml
+Dockerfile
+README.md

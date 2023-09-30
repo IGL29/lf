@@ -1,0 +1,10 @@
+<app-review-form
+  #reviewForm
+  [reviewFormData]="formData"
+  [isExistReviews]="isExistReviews"
+  [isLoading]="reviewIsLoading"
+  [isReviewsLoading]="reviewsIsLoading"
+  [error]="reviewError"
+  (emitSubmitForm)="handlerReviewSubmit($event)"
+  data-test="reviewForm"
+></app-review-form>

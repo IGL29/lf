@@ -1,0 +1,43 @@
+@import 'colors';
+@import 'media';
+
+.notify {
+  position: relative;
+  padding: 25px;
+  border: 1px solid $color-1;
+  border-radius: 10px;
+
+  &--warn {
+    background-color: rgb($color-10, $alpha: 0.9);
+  }
+
+  &__btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 10px;
+  }
+
+  &__title {
+    margin-bottom: 0;
+    color: $color-1;
+
+    &--mb {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+@media (max-width: $ui-md) {
+  .notify {
+    padding: 15px 25px 15px 15px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: $ui-xs) {
+  .notify {
+    padding: 10px 25px 10px 10px;
+    font-size: 10px;
+  }
+}

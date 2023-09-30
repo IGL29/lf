@@ -1,0 +1,108 @@
+<div class="burger-menu" aria-label="Боковое меню">
+  <div class="burger-menu__controls controls">
+    <a class="controls__link outline-focus" routerLink="/" aria-label="На главную">
+      <app-icon class="" icon="logo"></app-icon>
+    </a>
+
+    <button
+      class="controls__button btn-reset btn-close outline-focus"
+      (click)="closeMenu()"
+      aria-label="Закрыть меню"
+      data-test="btnClose"
+    ></button>
+  </div>
+
+  <app-search-form-container class="burger-menu__search-form"></app-search-form-container>
+
+  <div class="burger-menu__container-content container-content overflow-scroll-y--auto">
+    <div class="container-content__wrapper-content wrapper-content">
+      <nav class="burger-menu__nav nav" role="navigation" aria-label="Навигация по сайту">
+        <ul class="nav-list list-reset">
+          <li class="nav-list__item">
+            <a
+              class="outline-focus"
+              routerLink="/"
+              routerLinkActive="text-color--1"
+              [routerLinkActiveOptions]="{ exact: true }"
+              ariaCurrentWhenActive="page"
+              >Главная</a
+            >
+          </li>
+
+          <li class="nav-list__item" *appForEntries="let item of dataNav">
+            <a
+              class="outline-focus"
+              [routerLink]="item.value.url"
+              routerLinkActive="text-color--1"
+              ariaCurrentWhenActive="page"
+              >{{ item.value.title }}</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <div class="burger-menu__wrapper-email wrapper-email">
+        <a
+          href="mailto:zakaz@lowerflower.by&subject=Вопрос"
+          class="wrapper-email__link text-color--1 outline-focus text-uppercase"
+        >
+          {{ dataContacts.email }}
+        </a>
+
+        <p class="wrapper-email__paragraph-1">ДОСТАВКА 24/7 ПО ДОГОВОРЕННОСТИ С ОПЕРАТОРОМ</p>
+      </div>
+
+      <div class="burger-menu__wrapper-address wrapper-address">
+        <a
+          class="wrapper-address__link text-color--1 text-uppercase outline-focus"
+          routerLink="/contacts"
+          fragment="map"
+          aria-label="Посмотреть адрес на карте"
+          ><abbr title="Улица">УЛ.</abbr> {{ dataAddress.street }}</a
+        >
+
+        <p class="wrapper-address__paragraph-1 text-uppercase">
+          {{ dataAddress.workTime }}
+        </p>
+
+        <p class="wrapper-address__paragraph-2 text-uppercase">
+          {{ dataAddress.weekends }}
+        </p>
+      </div>
+
+      <div class="burger-menu__wrapper-policy wrapper-policy">
+        <a class="wrapper-policy__link-1 outline-focus" href="#">Политика конфиденциальности</a>
+
+        <a class="wrapper-policy__link-2 outline-focus" href="#">Обработка персональных данных</a>
+      </div>
+
+      <a
+        class="burger-menu__link outline-focus"
+        [href]="'tel:' + dataContacts.phone"
+        aria-label="Совершить звонок"
+      >
+        {{ dataContacts.phone | mask : '+000 (00) 000-00-00' }}
+      </a>
+    </div>
+  </div>
+
+  <ul class="burger-menu__social-list social-list list-reset outline-focus">
+    <li class="social-list__item">
+      <a class="outline-focus" aria-label="Инстаграм" [href]="dataContacts.social.instagram"
+        ><app-icon icon="instagram"></app-icon
+      ></a>
+    </li>
+
+    <li class="social-list__item">
+      <a class="outline-focus" [href]="dataContacts.social.whatsapp" aria-label="Вотсап"
+        ><app-icon icon="whatsapp"></app-icon
+      ></a>
+    </li>
+
+    <li class="social-list__item">
+      <a class="outline-focus" [href]="'tel:' + dataContacts.phone" aria-label="Совершить звонок"
+        ><app-icon icon="phone"></app-icon
+      ></a>
+    </li>
+  </ul>
+</div>

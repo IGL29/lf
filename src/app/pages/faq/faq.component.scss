@@ -1,0 +1,228 @@
+@import 'colors';
+@import 'media';
+
+.faq {
+  &--bg {
+    position: relative;
+
+    &::after {
+      position: absolute;
+      top: 50px;
+      right: 0;
+      z-index: -1;
+      width: 177px;
+      height: 215px;
+      background-image: image-set(
+        url('/assets/images/pages/faq/blue-flowers-bg.webp') type('image/webp'),
+        url('/assets/images/pages/faq/blue-flowers-bg.png')
+      );
+      background-repeat: no-repeat;
+      background-position: center right;
+      background-size: contain;
+      content: '';
+    }
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 150px;
+      height: 150px;
+      background-image: image-set(
+        url('/assets/images/pages/faq/blue-flowers-bg.webp') type('image/webp'),
+        url('/assets/images/pages/faq/blue-flowers-bg.png')
+      );
+      background-repeat: no-repeat;
+      background-position: center right;
+      background-size: contain;
+      transform: rotateY(180deg);
+      content: '';
+    }
+  }
+
+  &__decor-color-bg-top {
+    &::after {
+      position: absolute;
+      top: -462px;
+      left: -419px;
+      z-index: -2;
+      width: 784px;
+      height: 933px;
+      background-image: url('/assets/images/pages/faq/blue-color-bg.svg');
+      background-repeat: no-repeat;
+      background-position: center right;
+      background-size: 100% 100%;
+      transform: rotateZ(6deg);
+      content: '';
+    }
+
+    &::before {
+      position: absolute;
+      top: -367px;
+      right: -250px;
+      z-index: -2;
+      width: 784px;
+      height: 933px;
+      background-image: url('/assets/images/pages/faq/blue-color-bg.svg');
+      background-repeat: no-repeat;
+      background-position: center right;
+      background-size: 100% 100%;
+      transform: rotateZ(6deg);
+      content: '';
+    }
+  }
+
+  &__decor-color-bg-bottom {
+    &::after {
+      position: absolute;
+      bottom: -462px;
+      left: -419px;
+      z-index: -2;
+      width: 784px;
+      height: 933px;
+      background-image: url('/assets/images/pages/faq/blue-color-bg.svg');
+      background-repeat: no-repeat;
+      background-position: center right;
+      background-size: 100% 100%;
+      transform: rotateZ(6deg);
+      content: '';
+    }
+
+    &::before {
+      position: absolute;
+      right: -250px;
+      bottom: -367px;
+      z-index: -2;
+      width: 733px;
+      height: 698px;
+      background-image: url('/assets/images/pages/faq/blue-color-bg.svg');
+      background-repeat: no-repeat;
+      background-position: center right;
+      background-size: 100% 100%;
+      transform: rotateZ(80deg);
+      content: '';
+    }
+  }
+
+  &__accordion-wrapper {
+    max-width: 850px;
+  }
+
+  &__container {
+    padding-bottom: 200px;
+  }
+
+  &__breadcrumbs {
+    margin-bottom: 48px;
+  }
+
+  &__title {
+    position: relative;
+    margin-bottom: 40px;
+    padding-left: 100px;
+
+    &::after {
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      width: 65px;
+      height: 1px;
+      background-color: $color-1;
+      content: '';
+    }
+  }
+}
+
+.accordion {
+  border: 1px solid $color-1;
+
+  &__btn {
+    position: relative;
+    width: 100%;
+    padding: 20px 50px 20px 20px;
+    color: $color-1;
+    line-height: 1.6;
+    letter-spacing: 0.1em;
+    text-align: start;
+    text-decoration: uppercase;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: rgb($color: $color-1, $alpha: 20%);
+    }
+
+    &:active {
+      background-color: rgb($color: $color-1, $alpha: 30%);
+    }
+
+    &::after {
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      width: 20px;
+      height: 1px;
+      background-color: $color-1;
+      content: '';
+    }
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      width: 20px;
+      height: 1px;
+      background-color: $color-1;
+      transform: rotateZ(90deg);
+      transition: transform 0.3s;
+      content: '';
+    }
+
+    &--active {
+      &::before {
+        transform: rotateZ(0);
+      }
+    }
+  }
+
+  &__text {
+    padding: 0 20px 20px;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 1.6;
+  }
+}
+
+.accordion-list {
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+@media (max-width: $ui-xs) {
+  .faq {
+    &__container {
+      padding-bottom: 100px;
+    }
+
+    &__title {
+      margin-bottom: 60px;
+      padding-left: 0;
+
+      &::after {
+        content: none;
+      }
+    }
+  }
+
+  .accordion {
+    &__text {
+      font-size: 14px;
+    }
+  }
+}

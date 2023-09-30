@@ -1,0 +1,54 @@
+@import 'colors';
+@import 'media';
+
+.shared-bg-1 {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: -15px;
+    width: 638px;
+    height: 928px;
+    background-image: image-set(
+      url('/assets/images/pages/main/branch-bg.webp') type('image/webp'),
+      url('/assets/images/pages/main/branch-bg.png')
+    );
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-size: contain;
+    transform: rotateZ(0);
+    transform-origin: left center;
+    animation: oscillation-anim 4s ease-in-out alternate infinite;
+    content: '';
+    pointer-events: none;
+  }
+}
+
+@keyframes oscillation-anim {
+  from {
+    transform: rotateZ(1deg);
+  }
+
+  to {
+    transform: rotateZ(-2deg);
+  }
+}
+
+@media (max-width: $ui-md) {
+  .shared-bg-1 {
+    &::after {
+      left: -50px;
+      width: 780px;
+      height: 936px;
+    }
+  }
+}
+
+@media (max-width: $ui-sm) {
+  .shared-bg-1 {
+    &::after {
+      content: none;
+    }
+  }
+}

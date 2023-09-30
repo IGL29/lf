@@ -1,0 +1,211 @@
+@import 'colors';
+@import 'media';
+
+.not-found {
+  position: relative;
+  padding-top: 80px;
+  padding-bottom: 93px;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 64%;
+    max-width: 1100px;
+    height: 100%;
+    background-image: image-set(
+      url('/assets/images/pages/not-found/blue-flower.webp') type('image/webp'),
+      url('/assets/images/pages/not-found/blue-flower.png')
+    );
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 83% auto;
+    content: '';
+  }
+
+  &__decor-color-bg {
+    position: relative;
+
+    &-1 {
+      &::after {
+        position: absolute;
+        top: -462px;
+        left: -419px;
+        z-index: -2;
+        width: 1045px;
+        height: 970px;
+        background-image: url('/assets/images/pages/not-found/blue-color-bg.svg');
+        background-repeat: no-repeat;
+        background-position: center right;
+        background-size: 100% 100%;
+        content: '';
+      }
+
+      &::before {
+        position: absolute;
+        top: -435px;
+        right: -438px;
+        z-index: -2;
+        width: 1033px;
+        height: 946px;
+        background-image: url('/assets/images/pages/not-found/blue-color-bg.svg');
+        background-repeat: no-repeat;
+        background-position: center right;
+        background-size: 100% 100%;
+        content: '';
+      }
+    }
+
+    &-2 {
+      &::after {
+        position: absolute;
+        bottom: -359px;
+        left: -472px;
+        z-index: -2;
+        width: 967px;
+        height: 933px;
+        background-image: url('/assets/images/pages/not-found/blue-color-bg.svg');
+        background-repeat: no-repeat;
+        background-position: center right;
+        background-size: 100% 100%;
+        content: '';
+      }
+
+      &::before {
+        position: absolute;
+        right: -369px;
+        bottom: -367px;
+        z-index: -2;
+        width: 942px;
+        height: 744px;
+        background-image: url('/assets/images/pages/not-found/blue-color-bg.svg');
+        background-repeat: no-repeat;
+        background-position: center right;
+        background-size: 100% 100%;
+        content: '';
+      }
+    }
+  }
+
+  &__container {
+    position: relative;
+    padding-top: 60vh;
+  }
+
+  &__decor-text {
+    font-size: 600px;
+    font-family: 'Cormorant', sans-serif;
+  }
+}
+
+.decor-text {
+  &__letter {
+    color: transparent;
+    background: linear-gradient(180deg, #163d8f 0%, #163d8f 0%, #4f6cab 54.69%, #b6cdff 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.letter-1 {
+  position: absolute;
+  top: -0.5em;
+  left: 0;
+}
+
+.letter-2 {
+  position: absolute;
+  top: 0;
+  left: 0.5em;
+  z-index: 3;
+}
+
+.letter-3 {
+  position: absolute;
+  top: -0.3em;
+  left: 1em;
+}
+
+.container-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper-text {
+  margin-left: auto;
+
+  &__title {
+    margin-bottom: 20px;
+    font-size: 14px;
+  }
+
+  &__paragraph {
+    margin-bottom: 20px;
+  }
+
+  &__link {
+    text-decoration: underline;
+  }
+}
+
+@media (max-width: $ui-md) {
+  .letter-1 {
+    left: 0.3em;
+    font-size: 400px;
+  }
+
+  .letter-2 {
+    left: 0.8em;
+    font-size: 400px;
+  }
+
+  .letter-3 {
+    left: 1.3em;
+    font-size: 400px;
+  }
+}
+
+@media (max-width: $ui-sm) {
+  .letter-1 {
+    left: 0.3em;
+    font-size: 300px;
+  }
+
+  .letter-2 {
+    left: 0.8em;
+    font-size: 300px;
+  }
+
+  .letter-3 {
+    left: 1.3em;
+    font-size: 300px;
+  }
+}
+
+@media (max-width: $ui-xs) {
+  .not-found {
+    &::after {
+      width: 103%;
+    }
+
+    padding-bottom: 60px;
+  }
+
+  .letter-1 {
+    top: 0;
+    left: 0.1em;
+    font-size: 200px;
+  }
+
+  .letter-2 {
+    top: 0.5em;
+    left: 0.6em;
+    font-size: 200px;
+  }
+
+  .letter-3 {
+    top: 0.2em;
+    left: 1.1em;
+    font-size: 200px;
+  }
+}

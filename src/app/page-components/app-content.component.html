@@ -1,0 +1,33 @@
+<app-header
+  #header
+  class="header"
+  appVisibilityByScroll
+  [isMainRoute]="isMainRoute"
+  (emitIsOnMove)="header.isOnMove = $event"
+  (emitBurgerClick)="burgerMenu.switchVisibleMenu(true)"
+  (emitCartClick)="cartMenu.switchVisibleMenu()"
+  [isBurgerMenuOpen]="burgerMenu.isOpen"
+></app-header>
+
+<app-sidebar #burgerMenu>
+  <app-burger-menu
+    #content
+    (appChangeRoute)="burgerMenu.switchVisibleMenu(false)"
+    (emitCloseMenu)="burgerMenu.switchVisibleMenu(false)"
+  ></app-burger-menu>
+</app-sidebar>
+
+<app-sidebar #cartMenu positionMenu="right">
+  <app-cart-menu-container
+    (appChangeRoute)="cartMenu.switchVisibleMenu(false)"
+    (emitCloseMenu)="cartMenu.switchVisibleMenu(false)"
+  ></app-cart-menu-container>
+</app-sidebar>
+
+<app-notifications-container></app-notifications-container>
+
+<div class="wrapper-router-outlet" [ngClass]="{ 'wrapper-router-outlet--mt': isMainRoute }">
+  <router-outlet></router-outlet>
+</div>
+
+<app-footer></app-footer>

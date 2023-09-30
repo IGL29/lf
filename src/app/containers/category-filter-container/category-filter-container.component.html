@@ -1,0 +1,25 @@
+<ng-container *ngIf="!isMobile" [ngTemplateOutlet]="category"></ng-container>
+
+<app-accordion *ngIf="isMobile" data-test="accordionCategory">
+  <button
+    slot="button"
+    class="accordion__btn btn-reset text-color--4 text-uppercase text-weight-300 card-background outline-focus"
+  >
+    Категории товаров
+  </button>
+
+  <ng-template slot="content" #bodyContent>
+    <ng-container [ngTemplateOutlet]="category"></ng-container>
+  </ng-template>
+</app-accordion>
+
+<ng-template #category>
+  <h2 class="visually-hidden">Категории товаров</h2>
+
+  <app-category-filter
+    [categories]="categoriesData"
+    [activeCategories]="activeCategories"
+    (emitSelectCategory)="handlerSelectCategory($event)"
+    data-test="categoryFilter"
+  ></app-category-filter>
+</ng-template>

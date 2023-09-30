@@ -1,0 +1,7 @@
+<div
+  class="badge"
+  [ngClass]="{ 'badge--pink': bgColor === 'pink', 'badge--green': bgColor === 'green' }"
+  data-test="badge"
+>
+  <p class="badge__text text-uppercase" *ngIf="text" data-test="text">{{ text }}</p>
+</div>

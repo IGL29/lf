@@ -1,0 +1,26 @@
+<div class="hero hero--bg">
+  <picture>
+    <source srcset="/assets/images/pages/main/bouquet-in-hand-bg.webp" />
+    <img
+      class="hero__img"
+      src="/assets/images/pages/main/bouquet-in-hand-bg.jpg"
+      appParallax
+      [appParallaxBgOffsetX]="30"
+      [appParallaxBgOffsetY]="30"
+      appParallaxTargetVariant="img"
+      [appParallaxScale]="1.1"
+      aria-hidden="true"
+      role="presentation"
+    />
+  </picture>
+
+  <div class="container hero__container">
+    <h1 class="title title--mb">{{ data.title | uppercase }}</h1>
+
+    <p class="slogan slogan--mb">{{ data.slogan }}</p>
+
+    <a class="hero__btn" [routerLink]="data.link.url" appUiButton="1">
+      {{ data.link.title | uppercase }}
+    </a>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<div
+  class="outgoing-block"
+  [ngClass]="{
+    'outgoing-block--position-left': isLeftPosition,
+    'outgoing-block--position-right': isRightPosition,
+    'outgoing-block--opened-left': isOpen && isLeftPosition,
+    'outgoing-block--opened-right': isOpen && isRightPosition
+  }"
+>
+  <div
+    class="outgoing-block__wrapper-content"
+    [ngClass]="{ 'visibility--hidden': !isOpen }"
+    aria-haspopup="true"
+    [attr.aria-expanded]="isOpen"
+    role="dialog"
+  >
+    <ng-content></ng-content>
+  </div>
+</div>
+
+<div
+  class="background"
+  [ngClass]="{ 'background--active': isOpen }"
+  (pointerdown)="switchVisibleMenu(false)"
+></div>

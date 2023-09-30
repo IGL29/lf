@@ -1,0 +1,68 @@
+@import 'colors';
+
+:host {
+  display: inline-block;
+}
+
+.rating {
+  position: relative;
+  display: inline-block;
+  font-size: 40px;
+  line-height: 1;
+}
+
+.rating::before {
+  display: block;
+  content: '★★★★★';
+}
+
+.rating__items {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.rating__label {
+  flex: 0 0 20%;
+  height: 100%;
+  color: #cfcfcf;
+  outline: 1px solid transparent;
+  outline-offset: -2px;
+  cursor: pointer;
+
+  &::before {
+    transition: color 0.2s;
+    content: '★';
+  }
+
+  &--active {
+    color: #f5d76b;
+  }
+}
+
+.rating__input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  opacity: 0;
+
+  &:disabled + .rating__label {
+    cursor: default;
+  }
+
+  &:focus + .rating__label {
+    outline-color: $color-1;
+  }
+
+  &:not(:disabled) {
+    & + .rating__label:hover {
+      color: #f5d76c4b;
+    }
+  }
+}

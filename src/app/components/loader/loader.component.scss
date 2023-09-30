@@ -1,0 +1,35 @@
+@import 'colors';
+
+:host {
+  display: block;
+}
+
+.loader {
+  padding: 10px;
+  background-color: rgb($color: $color-5, $alpha: 100%);
+  border-radius: 10px;
+
+  &__icon {
+    max-width: 70px;
+    margin: 0 auto 5px;
+    color: $color-1;
+    transform: rotateZ(0deg);
+    transition: opacity 1s;
+    animation: rotation-anim 1.5s linear infinite;
+  }
+
+  &__text {
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
+
+@keyframes rotation-anim {
+  from {
+    transform: rotateZ(0deg);
+  }
+
+  to {
+    transform: rotateZ(180deg);
+  }
+}

@@ -1,0 +1,87 @@
+<div class="contacts-section contacts-section--bg">
+  <div class="contacts-section__decor-color-bg-1"></div>
+  <div class="contacts-section__decor-color-bg-2"></div>
+
+  <div class="contacts-section__container container--pt">
+    <div class="contacts-section__hero hero">
+      <div class="hero__container container">
+        <app-breadcrumbs
+          class="contacts-section__breadcrumbs"
+          [links]="data.breadcrumbs"
+        ></app-breadcrumbs>
+
+        <h1 class="hero__title section-title text-uppercase">
+          {{ data.title }}
+        </h1>
+
+        <ul class="hero__contacts-list contacts-list contacts-list--bg list-reset">
+          <li class="contacts-list__item card-background card-background">
+            <p class="contacts-list__paragraph-1 text-color--1 text-uppercase">
+              {{ data.contactsSection.time.title }}
+            </p>
+            <p class="contacts-list__paragraph-2">
+              {{ data.contactsSection.time.descr }}
+            </p>
+          </li>
+
+          <li class="contacts-list__item card-background card-background">
+            <p class="contacts-list__paragraph-1 text-color--1 text-uppercase">
+              {{ data.contactsSection.address.title }}
+            </p>
+            <p class="contacts-list__paragraph-2">
+              {{ data.contactsSection.address.descr }}
+            </p>
+          </li>
+
+          <li class="contacts-list__item card-background card-background">
+            <p class="contacts-list__paragraph-1 text-color--1 text-uppercase">
+              {{ data.contactsSection.phone.title }}
+            </p>
+            <a
+              class="contacts-list__paragraph-2"
+              [href]="'tel:' + data.contactsSection.phone.descr"
+              aria-label="Совершить звонок"
+            >
+              {{ data.contactsSection.phone.descr | mask : '+000 (00) 000-00-00' }}
+            </a>
+          </li>
+
+          <li class="contacts-list__item card-background card-background">
+            <p class="contacts-list__paragraph-1 text-color--1 text-uppercase">
+              {{ data.contactsSection.email.title }}
+            </p>
+            <a
+              class="contacts-list__paragraph-2"
+              [href]="'mailto:' + data.contactsSection.email.descr + '&subject=Вопрос'"
+            >
+              {{ data.contactsSection.email.descr }}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <section class="contacts__write-us write-us write-us--bg">
+      <div class="write-us__container container">
+        <h2 class="write-us__title section-title text-uppercase">
+          <p class="write-us__title-part-1">{{ data.feedback.title.part1 }}</p>
+          <p class="write-us__title-part-2">{{ data.feedback.title.part2 }}</p>
+        </h2>
+
+        <app-feedback-form-container></app-feedback-form-container>
+      </div>
+    </section>
+
+    <section class="on-map">
+      <div class="on-map__container container">
+        <h2 id="map" class="on-map__title text-color--1 text-uppercase">
+          {{ data.map.title }}
+        </h2>
+
+        <app-loader class="on-map__loader" *ngIf="isLoading" text="рисуем карту..."></app-loader>
+
+        <div [id]="mapId" class="on-map__map"></div>
+      </div>
+    </section>
+  </div>
+</div>

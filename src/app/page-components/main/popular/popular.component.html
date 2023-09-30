@@ -1,0 +1,43 @@
+<section class="popular-section popular-section--color-bg">
+  <div class="popular-section__container">
+    <div class="container popular-section__container-title">
+      <h2 class="section-title popular-section__section-title">
+        <span class="popular-section__section-title-part-1">{{
+          data.title | getWord : 0 | uppercase
+        }}</span>
+        <span class="popular-section__section-title-part-2">{{
+          data.title | getWord : 1 | uppercase
+        }}</span>
+      </h2>
+
+      <p class="popular-section__paragraph">
+        {{ data.descr }}
+      </p>
+    </div>
+
+    <app-products-offer-container
+      class="popular-section__wrapper-slider"
+      *ngIf="isSliderVisible; else productsWrapper"
+    ></app-products-offer-container>
+
+    <ng-template #productsWrapper>
+      <app-product-list-card class="popular-section__product-list" [isLoading]="isLoading">
+        <app-product-card
+          *ngFor="let product of offerProducts"
+          [product]="product"
+        ></app-product-card>
+      </app-product-list-card>
+    </ng-template>
+
+    <div class="container">
+      <a
+        class="link link--inline-flex link--items-center outline-focus"
+        [routerLink]="data.link.url"
+      >
+        <p class="link__text">{{ data.link.title | uppercase }}</p>
+
+        <app-icon icon="arrow-right" viewBox="0 -3 100 10" pathFill="#d978ac"></app-icon>
+      </a>
+    </div>
+  </div>
+</section>

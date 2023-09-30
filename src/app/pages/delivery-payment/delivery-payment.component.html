@@ -1,0 +1,161 @@
+<div class="delivery-payment delivery-payment--bg">
+  <div class="delivery-payment__decor-color-bg-1"></div>
+  <div class="delivery-payment__decor-color-bg-2"></div>
+
+  <div class="delivery-payment__hero-section container container--pt">
+    <app-breadcrumbs
+      class="delivery-payment__breadcrumbs"
+      [links]="data.breadcrumbs"
+    ></app-breadcrumbs>
+
+    <h1 class="section-title text-uppercase delivery-payment__delivery-payment-title">
+      <p class="delivery-payment-title__part-1">{{ data.title.part }}</p>
+      <p class="delivery-payment-title__part-2">{{ data.title.part2 }}</p>
+    </h1>
+
+    <div class="delivery-payment__warning-block warning-block">
+      <p class="warning-block__accent-paragraph text-color--3 text-uppercase">
+        {{ data.warning.title }}
+      </p>
+
+      <p class="warning-block__paragraph text-uppercase text-line-height-1-6">
+        {{ data.warning.text.part }}
+        <span class="text-color--1">{{ data.warning.text.part2 }}</span>
+      </p>
+    </div>
+  </div>
+
+  <section class="delivery-payment__payment-section payment-section">
+    <div class="payment-section__container container">
+      <h2 class="text-color--3 text-uppercase">
+        {{ data.section.payment.title }}
+      </h2>
+
+      <ul class="list-reset payment-section__payment-list payment-list">
+        <li
+          class="payment-list__item card-background text-uppercase"
+          *ngFor="let item of data.section.payment.list"
+        >
+          {{ item }}
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="delivery-payment__delivery-cost delivery-cost">
+    <div class="delivery-cost__container container">
+      <h2 class="delivery-cost__title text-color--3 text-uppercase">
+        {{ data.section.deliveryCost.title }}
+      </h2>
+
+      <ul class="delivery-cost__delivery-cost-list delivery-cost-list list-reset">
+        <li class="delivery-cost-list__item text-uppercase text-line-height-1-6">
+          {{ data.section.deliveryCost.text.part }}
+          <span class="text-weight-300">
+            {{ data.section.deliveryCost.text.part2 }}
+          </span>
+
+          <span class="text-color--1">
+            {{ data.section.deliveryCost.text.part3 }}
+          </span>
+        </li>
+
+        <li class="delivery-cost-list__item text-uppercase text-line-height-1-6">
+          {{ data.section.deliveryCost.text2.part }}
+          <span class="text-weight-300">
+            {{ data.section.deliveryCost.text2.part2 }}
+          </span>
+
+          <span class="text-color--1">
+            {{ data.section.deliveryCost.text2.part3 }}
+          </span>
+        </li>
+
+        <li class="delivery-cost-list__item text-uppercase text-weight-300 text-line-height-1-6">
+          <p>{{ data.section.deliveryCost.text3.part }}</p>
+
+          <a
+            class="text-color--1"
+            routerLink="/contacts"
+            fragment="map"
+            aria-label="Посмотреть на карте"
+          >
+            {{ data.section.deliveryCost.text3.part2 }}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="delivery-payment__delivery-condition-section delivery-condition-section">
+    <div class="delivery-condition-section__container container">
+      <h2 class="delivery-condition-section__title text-color--3 text-uppercase">
+        {{ data.section.deliveryCondition.title }}
+      </h2>
+
+      <ul
+        class="delivery-condition-section__delivery-condition-list delivery-condition-list list-reset text-weight-300"
+      >
+        <li class="text-uppercase">
+          {{ data.section.deliveryCondition.text.part }}
+          <span class="text-color--1 text-line-height-1-6">
+            {{ data.section.deliveryCondition.text.part2 }}</span
+          >
+        </li>
+
+        <li class="text-uppercase">
+          {{ data.section.deliveryCondition.text2.part }}
+          <span class="text-color--1 text-line-height-1-6">
+            {{ data.section.deliveryCondition.text2.part2 }}
+          </span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="delivery-payment__container-sections container-sections container">
+    <div class="container-sections__wrapper-sections wrapper-sections card-background">
+      <section class="wrapper-sections__additionally-section additionally-section">
+        <h2 class="additionally-section__title text-color--3 text-uppercase text-weight-300">
+          {{ data.section.additionally.title }}
+        </h2>
+
+        <p class="additionally-section__paragraph-1 text-weight-300 text-line-height-1-6">
+          {{ data.section.additionally.text }}
+        </p>
+
+        <ul
+          class="additionally-section__additionally-list additionally-list list-reset text-weight-300"
+        >
+          <li
+            class="additionally-list__item text-line-height-1-6"
+            *ngFor="let item of data.section.additionally.list"
+          >
+            {{ item }}
+          </li>
+        </ul>
+
+        <p class="additionally-section__paragraph-2 text-weight-300 text-line-height-1-6">
+          {{ data.section.additionally.text2.part }}
+          <a class="text-color--1" [href]="'tel:' + data.section.additionally.text2.part2">
+            {{ data.section.additionally.text2.part2 | mask : '+000 (00) 000-00-00' }} </a
+          >.
+        </p>
+      </section>
+
+      <section class="wrapper-sections__repayment-section repayment-section">
+        <h2 class="repayment-section__title text-color--3 text-uppercase">
+          {{ data.section.repayment.title }}
+        </h2>
+
+        <p class="repayment-section__paragraph-1 text-line-height-1-6 text-weight-300">
+          {{ data.section.repayment.text }}
+        </p>
+
+        <p class="repayment-section__paragraph-2 text-line-height-1-6 text-weight-300">
+          {{ data.section.repayment.text2 }}
+        </p>
+      </section>
+    </div>
+  </div>
+</div>

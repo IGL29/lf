@@ -1,0 +1,122 @@
+<div class="form-wrapper">
+  <p class="form-wrapper__descr text-line-height-1-8 text-uppercase">
+    Отправьте ваш вопрос, заказ, предложение или жалобу через форму обратной связи, и наш специалист
+    свяжется с вами в течение 15 минут.
+  </p>
+
+  <form
+    #questionForm="ngForm"
+    class="form-wrapper__question-form question-form"
+    (ngSubmit)="handlerQuestionSubmit(questionForm)"
+  >
+    <app-loader
+      *ngIf="isLoading"
+      class="question-form__loader"
+      text="Кормим почтового голубя..."
+    ></app-loader>
+
+    <app-field-wrapper class="question-form__field-wrapper">
+      <label slot="label" class="visually-hidden" for="input-name">Введите ваше имя</label>
+
+      <input
+        slot="field"
+        class="field field--accent field--hover-default field--hover-accent field--focus-accent field--mb"
+        [ngClass]="{
+          'field--error':
+            (inputName.touched || questionForm.submitted) &&
+            (inputName.hasError('required') || inputName.hasError('empty'))
+        }"
+        placeholder="{{ 'Ваше имя' | uppercase }}"
+        type="text"
+        name="name"
+        id="input-name"
+        ngModel
+        required
+        appEmpty
+        #inputName="ngModel"
+        autocomplete="given-name"
+      />
+
+      <app-error-field
+        ariaDescribedby="input-name"
+        [isRequired]="
+          (inputName.touched || questionForm.submitted) && inputName.hasError('required')
+        "
+        [isEmpty]="
+          (inputName.touched || questionForm.submitted) &&
+          (inputName.hasError('required') || inputName.hasError('empty'))
+        "
+      ></app-error-field>
+    </app-field-wrapper>
+
+    <app-field-wrapper class="question-form__field-wrapper">
+      <label class="visually-hidden" for="input-phone">Введите ваш номер телефона</label>
+      <input
+        class="field field--accent field--hover-default field--hover-accent field--focus-accent"
+        [class]="{
+          'field--error':
+            (inputPhone.touched || questionForm.submitted) &&
+            (inputPhone.hasError('required') || inputPhone.hasError('minlength'))
+        }"
+        placeholder="{{ '+7 (977) 777-77-77' | uppercase }}"
+        type="text"
+        name="phone"
+        id="input-phone"
+        ngModel
+        required
+        minlength="11"
+        #inputPhone="ngModel"
+        autocomplete="tel"
+        mask="+0 (000) 000-00-00"
+      />
+
+      <app-error-field
+        ariaDescribedby="input-phone"
+        [isRequired]="
+          (inputPhone.touched || questionForm.submitted) && inputPhone.hasError('required')
+        "
+        [isInvalidPhone]="
+          (inputPhone.touched || questionForm.submitted) && inputPhone.hasError('minlength')
+        "
+      ></app-error-field>
+    </app-field-wrapper>
+
+    <app-field-wrapper class="question-form__field-wrapper">
+      <label class="visually-hidden" for="input-comment">Введите ваш комментарий</label>
+
+      <textarea
+        class="field field--textarea field--accent field--hover-accent field--focus-accent"
+        [class]="{
+          'field--error':
+            (inputComment.touched || questionForm.submitted) &&
+            (inputComment.hasError('required') || inputComment.hasError('empty'))
+        }"
+        placeholder="{{ 'Ваш комментарий' | uppercase }}"
+        name="comment"
+        id="input-comment"
+        ngModel
+        required
+        appEmpty
+        #inputComment="ngModel"
+      ></textarea>
+
+      <app-error-field
+        ariaDescribedby="input-comment"
+        [isRequired]="
+          (inputComment.touched || questionForm.submitted) && inputComment.hasError('required')
+        "
+        [isEmpty]="
+          (inputComment.touched || questionForm.submitted) && inputComment.hasError('empty')
+        "
+      ></app-error-field>
+    </app-field-wrapper>
+
+    <button appUiButton="1">{{ 'Отправить' | uppercase }}</button>
+  </form>
+
+  <p class="form-wrapper__paragraph">
+    Нажимая на кнопку «Отправить», я даю свое согласие на обработку персональных данных, в
+    соответствии с
+    <a class="form-wrapper__link link outline-focus" href="#">Политикой конфиденциальности</a>
+  </p>
+</div>

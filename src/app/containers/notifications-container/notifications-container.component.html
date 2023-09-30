@@ -1,0 +1,6 @@
+<app-notifications
+  [notifications]="(notifications$ | async) || []"
+  (emitHide)="handlerNotifyClose($event)"
+  (emitHideAll)="handlerNotifyCloseAll()"
+  data-test="notifications"
+></app-notifications>

@@ -1,0 +1,8 @@
+<div (click)="switchContentVisible()" data-test="wrapper-button">
+  <ng-content select="button"></ng-content>
+</div>
+
+<div class="content-wrapper" *ngIf="isOpen" [@expandAnimation] data-test="wrapper-content">
+  <ng-container [ngTemplateOutlet]="bodyContent"></ng-container>
+  <ng-content select="content"></ng-content>
+</div>

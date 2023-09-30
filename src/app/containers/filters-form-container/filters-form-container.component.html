@@ -1,0 +1,7 @@
+<app-filters-form
+  [filtersData]="filtersDefaultData"
+  [updatedFiltersData]="updatedFiltersData"
+  (emitControlsValueChanged)="handlerControlsValueChanged($event)"
+  (emitResetFilters)="handlerResetFilters()"
+  data-test="filtersForm"
+></app-filters-form>

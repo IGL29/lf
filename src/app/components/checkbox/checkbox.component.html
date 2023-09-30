@@ -1,0 +1,21 @@
+<div class="filter-form__checkbox-wrapper checkbox-wrapper">
+  <input
+    #checkbox
+    class="checkbox-wrapper__input"
+    [id]="id"
+    type="checkbox"
+    [value]="attrValue"
+    [name]="attrName"
+    [checked]="isChecked"
+    (change)="onChange($event)"
+    [formControl]="checkboxControl"
+  />
+  <div class="checkbox-wrapper__checkbox"></div>
+  <label
+    class="checkbox-wrapper__label text-uppercase text-weight-300"
+    [for]="id"
+    data-test="label"
+  >
+    {{ labelValue }}
+  </label>
+</div>

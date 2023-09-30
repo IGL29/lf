@@ -1,0 +1,96 @@
+<div class="about-us about-us--bg">
+  <div class="about-us__decor-color-bg-1"></div>
+  <div class="about-us__decor-color-bg-2"></div>
+  <div class="about-us__decor-color-bg-3"></div>
+
+  <div class="about-us__container container--pt">
+    <div class="container">
+      <app-breadcrumbs
+        class="about-us__breadcrumbs"
+        [links]="data.breadcrumbs"
+      ></app-breadcrumbs>
+
+      <h1 class="about-us__title section-title text-uppercase">
+        {{ data.title }}
+      </h1>
+    </div>
+
+    <section class="about-us__lover-flower lover-flower">
+      <div class="lover-flower__container">
+        <h2 class="lover-flower__title text-color--1 text-uppercase subtitle">
+          {{ data.section.loverFlower.title }}
+        </h2>
+
+        <div
+          class="
+            lover-flower__lover-flower-text
+            lover-flower-text
+            card-background
+          "
+        >
+          <p
+            class="
+              lover-flower-text__paragraph-1
+              text-uppercase text-weight-300 text-line-height-1-6
+            "
+          >
+            {{ data.section.loverFlower.text }}
+          </p>
+
+          <p
+            class="
+              lover-flower-text__paragraph-2
+              text-weight-300 text-line-height-1-6
+            "
+          >
+            {{ data.section.loverFlower.text2 }}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-us__guarantees guarantees">
+      <div class="guarantees__container container">
+        <h2 class="guarantees__title text-color--1 subtitle text-uppercase">
+          {{ data.section.guarantees.title }}
+        </h2>
+
+        <p
+          class="
+            guarantees__paragraph
+            text-uppercase text-line-height-1-6 text-weight-300
+          "
+        >
+          {{ data.section.guarantees.text }}
+        </p>
+      </div>
+    </section>
+
+    <section class="about-us__services services">
+      <div class="services__container container">
+        <h2 class="services__title text-color--1 text-uppercase subtitle">
+          {{ data.section.services.title }}
+        </h2>
+
+        <ul class="services__list text-weight-300">
+          <li
+            class="services__item"
+            *ngFor="let service of data.section.services.list"
+          >
+            {{ service }}
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="container">
+      <p class="about-us__paragraph-1 text-uppercase">
+        {{ data.section.aboutUs.text }}
+      </p>
+
+      <p class="about-us__paragraph-2 text-uppercase text-line-height-1-6">
+        {{ data.section.aboutUs.text2 }}
+      </p>
+    </div>
+  </div>
+</div>

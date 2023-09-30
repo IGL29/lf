@@ -1,0 +1,9 @@
+<div class="reviews-list__review-item review-item">
+  <p class="review-item__text">
+    {{ comment }}
+  </p>
+
+  <app-rating [isDisabled]="true" [rating]="rating" class="review-item__rating"></app-rating>
+
+  <p class="review-item__info-text">{{ author }}, {{ createdAt | date : 'shortDate' }}</p>
+</div>

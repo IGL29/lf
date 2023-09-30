@@ -1,0 +1,83 @@
+<div class="catalog">
+  <div class="catalog__bg-top"></div>
+  <div class="catalog__container container container--pt">
+    <app-breadcrumbs class="catalog__breadcrumbs" [links]="pageData.breadcrumbs"></app-breadcrumbs>
+
+    <div class="catalog__hero hero card-background">
+      <h1 class="hero__section-title section-title catalog-title text-uppercase">
+        <p class="catalog-title__part-1">каталог</p>
+        <p class="catalog-title__part-2">букетов</p>
+      </h1>
+
+      <p class="hero__paragraph text-uppercase text-line-height-1-6">
+        В нашем магазине самый большой выбор букетов для любых событий:
+      </p>
+
+      <app-category-filter-container class="hero__filters"></app-category-filter-container>
+    </div>
+
+    <div class="catalog__sort-wrapper sort-wrapper">
+      <app-sorting-container class="sort-wrapper__sorting"></app-sorting-container>
+    </div>
+
+    <div class="catalog__wrapper-products wrapper-products">
+      <ng-container *ngIf="!isMobile" [ngTemplateOutlet]="filters"></ng-container>
+
+      <app-accordion class="accordion" *ngIf="isMobile">
+        <button
+          slot="button"
+          class="accordion__btn btn-reset text-color--4 text-uppercase text-weight-300 card-background outline-focus"
+        >
+          Фильтр товаров
+        </button>
+
+        <ng-template slot="content" #bodyContent>
+          <ng-container [ngTemplateOutlet]="filters"></ng-container>
+        </ng-template>
+      </app-accordion>
+
+      <ng-template #filters>
+        <app-filters-form-container
+          class="wrapper-products__filter-form"
+        ></app-filters-form-container>
+      </ng-template>
+
+      <app-product-list-card
+        class="wrapper-products__products-list"
+        *ngIf="products"
+        [isLoading]="isProductsLoading"
+        [error]="isError"
+        (emitRepeatRequest)="repeatRequestProducts()"
+      >
+        <div
+          class="wrapper-products__empty-block text-uppercase text-line-height-1-6"
+          *ngIf="!isProductsLoading && !isError && !products.length"
+        >
+          <p>Товары не найдены.</p>
+          <p>Попробуйте изменить фильтры.</p>
+        </div>
+
+        <app-product-card [product]="product" *ngFor="let product of products">
+          <button
+            (click)="addToCart({product, count: 1})"
+            class="text-uppercase"
+            slot="btn"
+            appUiButton="2"
+          >
+            В корзину
+          </button>
+        </app-product-card>
+      </app-product-list-card>
+    </div>
+  </div>
+
+  <button
+    class="catalog__btn-scroll btn-reset btn-scroll card-background"
+    aria-label="Пролистнуть наверх"
+    appButtonScroll
+  >
+    <app-icon class="btn-scroll__icon" icon="arrow-right"></app-icon>
+  </button>
+
+  <div class="catalog__bg-bottom"></div>
+</div>

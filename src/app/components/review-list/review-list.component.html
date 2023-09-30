@@ -1,0 +1,20 @@
+<div class="reviews">
+  <app-error-block
+    class="container reviews__error"
+    *ngIf="error"
+    (emitRepeatRequest)="repeatRequestComments()"
+  ></app-error-block>
+
+  <app-loader class="reviews__loader" *ngIf="isLoading" text="Загружаем отзывы"></app-loader>
+
+  <ng-container *ngIf="isExistReviews">
+    <app-review
+      class="reviews__review"
+      *ngFor="let review of reviews"
+      [comment]="review.comment"
+      [author]="review.author"
+      [createdAt]="review.createdAt"
+      [rating]="review.rating"
+    ></app-review>
+  </ng-container>
+</div>

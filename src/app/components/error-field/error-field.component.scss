@@ -1,0 +1,15 @@
+@import 'colors';
+
+:host {
+  display: block;
+}
+
+.error {
+  color: $color-7;
+  font-size: 12px;
+  text-transform: uppercase;
+
+  &--space-top {
+    padding-top: 10px;
+  }
+}

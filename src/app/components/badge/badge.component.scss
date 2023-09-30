@@ -1,0 +1,31 @@
+@import 'colors';
+
+.badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+  height: 60px;
+  padding: 3px;
+  border-radius: 50%;
+
+  &__text {
+    font-size: 20px;
+  }
+
+  &--pink {
+    background-color: $color-3;
+
+    & > .badge__text {
+      color: $color-5;
+    }
+  }
+
+  &--green {
+    background-color: $color-1;
+
+    & > .badge__text {
+      color: $color-5;
+    }
+  }
+}

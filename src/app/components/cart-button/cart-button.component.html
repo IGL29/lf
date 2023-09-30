@@ -1,0 +1,13 @@
+<button class="btn-reset btn-cart outline-focus" aria-label="Корзина">
+  <app-icon class="btn-cart__icon" icon="cart"></app-icon>
+
+  <div
+    class="btn-cart__count count count--opacity-0"
+    [ngClass]="{ 'count--opacity-1': isCountVisible }"
+    data-test="wrapperCount"
+  >
+    <div class="count__value" data-test="countValue">
+      {{ count | maxNumber : 99 : '+' }}
+    </div>
+  </div>
+</button>

@@ -1,0 +1,111 @@
+.field-error-icon {
+  right: -20px;
+  width: 20px;
+  height: 20px;
+  background-color: $color-2;
+}
+
+.field {
+  width: 100%;
+  padding: 20px;
+  font-size: 14px;
+  background-color: transparent;
+  border-style: solid;
+  border-width: 1px;
+  outline: transparent solid 1px;
+  transition:
+    border-color 0.3s,
+    outline-color 0.3s;
+
+  &--mini {
+    padding: 5px;
+  }
+
+  &--textarea {
+    resize: none;
+  }
+
+  &--not-empty {
+    border-color: $color-4;
+
+    &::placeholder {
+      color: $color-4;
+    }
+  }
+
+  &--border-transparent {
+    border-color: transparent;
+  }
+
+  &--color-light {
+    color: $color-1;
+
+    &::placeholder {
+      color: $color-4;
+    }
+  }
+
+  &--placeholder-uppercase {
+    &::placeholder {
+      text-transform: uppercase;
+    }
+  }
+
+  &::placeholder {
+    font-size: 14px;
+  }
+
+  &--default {
+    color: $color-4;
+    border-color: $color-6;
+
+    &::placeholder {
+      color: $color-6;
+    }
+  }
+
+  &--accent {
+    color: $color-4;
+    border-color: $color-1;
+
+    &::placeholder {
+      color: #395959;
+    }
+  }
+
+  &--error {
+    border-color: $color-7;
+
+    &::placeholder {
+      color: $color-7;
+    }
+  }
+
+  &--focus-default {
+    &:focus {
+      outline-color: $color-1;
+    }
+  }
+
+  &--hover-default {
+    &:hover {
+      outline-color: #43ffd25c;
+    }
+  }
+
+  &--hover-accent {
+    &:hover {
+      outline-color: #ffffffb7;
+    }
+  }
+
+  &--focus-accent {
+    &:focus {
+      outline-color: $color-4;
+    }
+  }
+}
+
+.resize--none {
+  resize: none;
+}

@@ -1,0 +1,16 @@
+<div class="radio-wrapper">
+  <input
+    class="radio-wrapper__input"
+    [id]="id"
+    type="radio"
+    [name]="attrName"
+    [value]="attrValue"
+    [checked]="isChecked"
+  />
+
+  <div class="radio-wrapper__custom-radio"></div>
+
+  <label class="radio-wrapper__label text-uppercase" [for]="id">{{
+    labelValue
+  }}</label>
+</div>

@@ -1,0 +1,23 @@
+<div
+  class="dropdown"
+  (mouseenter)="eventHandler({ event: $event, value: true })"
+  (mouseleave)="eventHandler({ event: $event, value: false })"
+  (appOutsideFocus)="handlerOutsideTrigger()"
+  (appOutsideClick)="handlerOutsideTrigger()"
+>
+  <div (click)="eventHandler({ event: $event })">
+    <ng-content select="[slot=button]"></ng-content>
+  </div>
+
+  <div
+    class="dropdown__content dropdown__content--visibility-hidden"
+    [class.dropdown__content--visibility-visible]="isVisibleContent"
+    [ngClass]="{
+      'dropdown__content--position-right': contentPosition === 'right',
+      'dropdown__content--position-left': contentPosition === 'left',
+      'dropdown__content--position-center': contentPosition === 'center'
+    }"
+  >
+    <ng-content select="[slot=content]"></ng-content>
+  </div>
+</div>

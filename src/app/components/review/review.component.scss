@@ -1,0 +1,32 @@
+@import 'colors';
+
+:host {
+  display: block;
+}
+
+.review-item {
+  position: relative;
+  padding: 44px 5px 5px;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: $color-1;
+    font-size: 30px;
+    content: '“';
+  }
+
+  &__text {
+    margin-bottom: 5px;
+    font-size: 16px;
+  }
+
+  &__rating {
+    margin-bottom: 15px;
+  }
+
+  &__info-text {
+    color: $color-8;
+  }
+}

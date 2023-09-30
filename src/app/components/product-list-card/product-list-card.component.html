@@ -1,0 +1,11 @@
+<div class="products-list">
+  <app-loader *ngIf="isLoading" class="products-list__loader" text="фотографируем..."></app-loader>
+
+  <app-error-block
+    *ngIf="error"
+    text="Произошла ошибка"
+    (emitRepeatRequest)="repeatRequestProducts()"
+  ></app-error-block>
+
+  <ng-content *ngIf="isNotLoading && isNotError"></ng-content>
+</div>

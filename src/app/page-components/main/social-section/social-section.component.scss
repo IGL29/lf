@@ -1,0 +1,239 @@
+@import 'colors';
+@import 'media';
+
+.social-section {
+  position: relative;
+
+  &__container {
+    display: flex;
+    padding-top: 270px;
+    padding-bottom: 200px;
+  }
+
+  &--decor-bg {
+    &::after {
+      position: absolute;
+      bottom: -231px;
+      left: 76%;
+      z-index: -1;
+      width: 793px;
+      height: 580px;
+      background-image: url('/assets/images/pages/shared/pink-color-bg.svg');
+      background-repeat: no-repeat;
+      background-position: bottom;
+      background-size: 100% 100%;
+      transform: rotateZ(11deg);
+      opacity: 0.8;
+      content: '';
+    }
+  }
+
+  &::after {
+    position: absolute;
+    bottom: -150px;
+    left: 20%;
+    z-index: -1;
+    width: 975px;
+    height: 290px;
+    background-image: url('/assets/images/pages/shared/green-color-bg.svg');
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100% 100%;
+    transform: rotateZ(11deg);
+    opacity: 0.8;
+    content: '';
+  }
+
+  &::before {
+    position: absolute;
+    bottom: -140px;
+    left: -12%;
+    z-index: -1;
+    width: 509px;
+    height: 290px;
+    background-image: url('/assets/images/pages/shared/green-color-bg.svg');
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100% 100%;
+    transform: rotateZ(11deg);
+    opacity: 0.8;
+    content: '';
+  }
+}
+
+.wrapper {
+  &-1 {
+    display: flex;
+    flex-basis: 70%;
+    flex-grow: 1;
+    min-height: 160px;
+    margin-right: 30px;
+
+    &__block-image {
+      flex-basis: 100%;
+    }
+
+    &__block-image:not(:last-child) {
+      margin-right: 30px;
+    }
+  }
+
+  &-2 {
+    display: flex;
+    flex-basis: 30%;
+    flex-direction: column;
+  }
+}
+
+.social-list {
+  display: flex;
+
+  &__item {
+    width: 40px;
+    height: 40px;
+
+    &:not(:last-child) {
+      margin-right: 30px;
+    }
+  }
+
+  &__link {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__icon {
+    display: block;
+  }
+}
+
+.wrapper-social-list {
+  align-self: flex-end;
+}
+
+.signature {
+  position: relative;
+  height: 100%;
+
+  &::after {
+    position: absolute;
+    top: -55px;
+    left: 0;
+    width: 50%;
+    min-width: 100px;
+    height: 101px;
+    background-image: url('/assets/images/pages/main/our-social-networks-bg.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    content: '';
+  }
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: $color-1;
+    content: '';
+  }
+}
+
+.block-image {
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
+
+  &-1 {
+    background-image: image-set(
+      url('/assets/images/pages/main/social-section-img-1.webp') type('image/webp'),
+      url('/assets/images/pages/main/social-section-img-1.jpg')
+    );
+  }
+
+  &-2 {
+    background-image: image-set(
+      url('/assets/images/pages/main/social-section-img-2.webp') type('image/webp'),
+      url('/assets/images/pages/main/social-section-img-2.jpg')
+    );
+  }
+
+  &-3 {
+    background-image: image-set(
+      url('/assets/images/pages/main/social-section-img-3.webp') type('image/webp'),
+      url('/assets/images/pages/main/social-section-img-3.jpg')
+    );
+  }
+
+  &-4 {
+    background-image: image-set(
+      url('/assets/images/pages/main/social-section-img-4.webp') type('image/webp'),
+      url('/assets/images/pages/main/social-section-img-4.jpg')
+    );
+  }
+}
+
+@media (max-width: $ui-sm) {
+  .social-section {
+    &__container {
+      flex-direction: column-reverse;
+      padding-top: 100px;
+      padding-bottom: 100px;
+    }
+  }
+
+  .wrapper {
+    &-1 {
+      display: grid;
+      grid-gap: 20px;
+      grid-template-columns: repeat(2, 1fr);
+      margin-right: 0;
+
+      &__block-image {
+        padding-top: 100%;
+
+        &:not(:last-child) {
+          margin-right: 0;
+        }
+      }
+    }
+
+    &-2 {
+      flex-direction: row;
+      justify-content: space-between;
+
+      &__signature {
+        margin-right: 20px;
+      }
+    }
+  }
+
+  .wrapper-social-list {
+    align-self: center;
+  }
+
+  .signature {
+    width: 40%;
+    padding-top: 130px;
+
+    &::after {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &::before {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+@media (max-width: $ui-xs) {
+  .social-section {
+    &__container {
+      padding-top: 10px;
+    }
+  }
+}

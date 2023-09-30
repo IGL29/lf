@@ -1,0 +1,70 @@
+<form class="filter-form card-background" [formGroup]="filtersForm">
+  <h2 class="visually-hidden">Фильтр товаров</h2>
+
+  <ng-container *ngIf="filtersData">
+    <ng-container *appForEntries="let group of filtersData">
+      <fieldset
+        class="filter-form__fieldset fieldset"
+        [formGroupName]="group.name"
+        *ngIf="group.value.to === undefined && group.value.from === undefined"
+      >
+        <legend class="fieldset__legend text-uppercase text-color--1">
+          {{ group.name | productFeatures }}
+        </legend>
+
+        <ng-container>
+          <app-checkbox
+            #checkbox
+            *appForEntries="let control of group.value"
+            [labelValue]="
+              control.name
+                | productColorName
+                | productFormatName
+                | productLightName
+                | productFlowerName
+            "
+            [attrValue]="control.name"
+            [formControlName]="control.name"
+          ></app-checkbox>
+        </ng-container>
+      </fieldset>
+
+      <ng-container *ngIf="group.value.to !== undefined && group.value.from !== undefined">
+        <fieldset class="filter-form__fieldset fieldset">
+          <legend class="fieldset__legend text-uppercase text-color--1">
+            {{ group.name | productFeatures }}
+          </legend>
+
+          <app-range
+            #rangePrice
+            [formControlName]="group.name"
+            [min]="rangeMin"
+            [max]="rangeMax"
+            [gap]="50"
+          ></app-range>
+
+          <p class="text-uppercase text-weight-300">
+            {{ group.name | productPriceName }}:
+            <abbr
+              title="Минимальная"
+              *ngIf="rangePrice.value.from === rangePrice.min; else valueFrom"
+              >мин
+            </abbr>
+
+            <ng-template #valueFrom>{{ rangePrice.value.from | currency : 'RUB' }}</ng-template>
+            –
+            <abbr title="Максимальная" *ngIf="rangePrice.value.to === rangePrice.max; else valueTo"
+              >макс
+            </abbr>
+
+            <ng-template #valueTo>{{ rangePrice.value.to | currency : 'RUB' }}</ng-template>
+          </p>
+        </fieldset>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+
+  <button class="text-uppercase" type="button" appUiButton="2" (click)="handlerResetFilters()">
+    Сбросить фильтр
+  </button>
+</form>

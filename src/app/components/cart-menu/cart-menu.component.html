@@ -1,0 +1,126 @@
+<div class="cart-menu-container cart-menu-container--bg">
+  <div class="cart-menu-container__header header">
+    <h2 class="header__title text-color--1 text-uppercase">Ваша корзина</h2>
+
+    <button
+      class="header__btn btn-reset btn-close outline-focus"
+      (click)="closeMenu()"
+      aria-label="Закрыть корзину"
+      data-test="btnClose"
+    ></button>
+  </div>
+
+  <div class="wrapper-cart-container">
+    <div class="cart-menu-container__body body overflow-scroll-y--auto">
+      <ul class="body__cart-list cart-list list-reset">
+        <li
+          class="cart-list__cart-item"
+          *ngFor="let cartItem of inCartProducts; trackBy: trackByProductId"
+          [@enterLeaveAnimation]
+          data-test="cartItem"
+        >
+          <app-product-item
+            [product]="cartItem.product"
+            [count]="cartItem.count"
+            [minCount]="minProductCount"
+            (countChange)="onChangeProductCount(cartItem.product, $event)"
+            (emitDeleteFromCart)="deleteFromCart($event)"
+            data-test="productItemComponent"
+          ></app-product-item>
+        </li>
+      </ul>
+
+      <div
+        class="text-color--1 cart-menu-container__wrapper-empty wrapper-empty"
+        *ngIf="!isCartNotEmpty"
+      >
+        <p class="empty text-uppercase">Корзина пуста.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cart-menu-container__recommendation recommendation">
+    <app-loader
+      *ngIf="isOfferProductsLoading"
+      text="Подбираем интересное предложение..."
+      data-test="loader"
+    ></app-loader>
+
+    <ng-template [ngIf]="!isOfferProductsLoading && _offerProducts.length">
+      <p class="recommendation__title text-uppercase">
+        Добавьте к заказу
+        <a
+          class="text-color--1 outline-focus"
+          [routerLink]="['/catalog']"
+          [queryParams]="{ category: 'balloon' }"
+          aria-label="На страницу товара"
+          >Шары:</a
+        >
+      </p>
+
+      <div class="recommendation__wrapper-list block-bottom-underline">
+        <ul class="recommendation__recommendation-list recommendation-list list-reset">
+          <li
+            class="recommendation-list__recommendation-item recommendation-item"
+            *ngFor="let product of _offerProducts"
+            data-test="itemOfferProduct"
+          >
+            <a
+              class="recommendation-item__img-wrapper-link img-wrapper-link outline-focus"
+              [routerLink]="['/product', '1']"
+            >
+              <img
+                class="img-wrapper-link__img"
+                [src]="product.images.main"
+                [alt]="product.title"
+              />
+            </a>
+
+            <div class="recommendation-item__content">
+              <h3 class="recommendation-item__title text-uppercase">
+                {{ product.title }}
+              </h3>
+
+              <p class="recommendation-item__price text-color--1">
+                {{ product.price.value | currency : 'RUB' }}
+              </p>
+
+              <button
+                class="recommendation-item__btn btn-reset text-uppercase text-color--4 outline-focus"
+                aria-label="Добавить в корзину"
+                (click)="addToCart(product)"
+              >
+                <span class="text-underline">Добавить</span>
+              </button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </ng-template>
+  </div>
+
+  <div
+    class="cart-menu-container__wrapper-descr"
+    *ngIf="isCartNotEmpty"
+    [@fadeAnimation]
+    [@expandAnimation]
+  >
+    <p class="text-uppercase text-color--1 text-line-height-1-6">
+      Предварительный итог: {{ cartPrice | currency : 'RUB' }}.
+    </p>
+
+    <p class="cart-menu-container__paragraph-2 text-uppercase text-line-height-1-6">
+      Чтобы узнать стоимость доставки, перейдите к оформлению заказа.
+    </p>
+
+    <div>
+      <a
+        class="cart-menu-container__link text-uppercase"
+        routerLink="/order"
+        appUiButton="2"
+        aria-label="Перейти к оформлению заказа"
+        >Оформить заказ</a
+      >
+    </div>
+  </div>
+</div>

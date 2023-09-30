@@ -1,0 +1,344 @@
+@import 'colors';
+@import 'media';
+
+html {
+  scroll-behavior: smooth;
+}
+
+.contacts-section {
+  &--bg {
+    position: relative;
+
+    &::after {
+      position: absolute;
+      top: 50px;
+      right: 0;
+      z-index: -1;
+      width: 704px;
+      height: 717px;
+      background-image: image-set(
+        url('/assets/images/pages/contacts/red-flowers-bg.webp') type('image/webp'),
+        url('/assets/images/pages/contacts/red-flowers-bg.png')
+      );
+      background-repeat: no-repeat;
+      background-position: center right;
+      background-size: contain;
+      content: '';
+    }
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      z-index: -1;
+      width: 383px;
+      height: 404px;
+      background-image: image-set(
+        url('/assets/images/pages/contacts/red-flowers-bg.webp') type('image/webp'),
+        url('/assets/images/pages/contacts/red-flowers-bg.png')
+      );
+      background-repeat: no-repeat;
+      background-position: center right;
+      background-size: contain;
+      transform: rotateY(180deg);
+      content: '';
+    }
+  }
+
+  &__decor-color-bg {
+    &-1 {
+      &::after {
+        position: absolute;
+        top: -462px;
+        left: -419px;
+        z-index: -2;
+        width: 1045px;
+        height: 970px;
+        background-image: url('/assets/images/pages/contacts/red-color-bg.svg');
+        background-repeat: no-repeat;
+        background-position: center right;
+        background-size: 100% 100%;
+        transform: rotateZ(76deg);
+        content: '';
+      }
+
+      &::before {
+        position: absolute;
+        top: -304px;
+        right: -307px;
+        z-index: -2;
+        width: 1033px;
+        height: 946px;
+        background-image: url('/assets/images/pages/contacts/red-color-bg.svg');
+        background-repeat: no-repeat;
+        background-position: center right;
+        background-size: 100% 100%;
+        transform: rotateZ(120deg);
+        content: '';
+      }
+    }
+
+    &-2 {
+      &::after {
+        position: absolute;
+        bottom: -359px;
+        left: -223px;
+        z-index: -2;
+        width: 967px;
+        height: 933px;
+        background-image: url('/assets/images/pages/contacts/red-color-bg.svg');
+        background-repeat: no-repeat;
+        background-position: center right;
+        background-size: 100% 100%;
+        transform: rotateZ(126deg);
+        content: '';
+      }
+
+      &::before {
+        position: absolute;
+        right: -338px;
+        bottom: -367px;
+        z-index: -2;
+        width: 942px;
+        height: 744px;
+        background-image: url('/assets/images/pages/contacts/red-color-bg.svg');
+        background-repeat: no-repeat;
+        background-position: center right;
+        background-size: 100% 100%;
+        transform: rotateZ(93deg);
+        content: '';
+      }
+    }
+  }
+
+  &__container {
+    padding-bottom: 200px;
+  }
+
+  &__breadcrumbs {
+    margin-bottom: 46px;
+  }
+}
+
+.hero {
+  &__title {
+    margin-bottom: 40px;
+    padding-left: 90px;
+  }
+
+  &__container {
+    padding-bottom: 140px;
+  }
+}
+
+.contacts-list {
+  display: flex;
+
+  &--bg {
+    position: relative;
+
+    &::after {
+      position: absolute;
+      top: -462px;
+      left: -72px;
+      z-index: -2;
+      width: 949px;
+      height: 1230px;
+      background-image: url('/assets/images/pages/contacts/red-color-bg.svg');
+      background-repeat: no-repeat;
+      background-position: center right;
+      background-size: 100% 100%;
+      transform: rotateZ(151deg);
+      content: '';
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-basis: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 54px 30px;
+    font-size: 20px;
+    line-height: 1.3;
+    text-align: center;
+    border-radius: 20px;
+
+    &:not(:last-child) {
+      margin-right: 30px;
+    }
+  }
+
+  &__paragraph-1 {
+    margin-bottom: 30px;
+  }
+
+  &__paragraph-2 {
+    font-weight: 300;
+    font-size: 20px;
+  }
+}
+
+.write-us {
+  &__container {
+    display: flex;
+    padding-bottom: 100px;
+  }
+
+  &__title {
+    margin-right: 68px;
+    text-align: end;
+  }
+
+  &--bg {
+    position: relative;
+
+    &::after {
+      position: absolute;
+      top: 40%;
+      left: 20%;
+      z-index: -2;
+      width: 300px;
+      height: 300px;
+      background-image: url('/assets/images/pages/contacts/have-any-questions.svg');
+      background-repeat: no-repeat;
+      background-position: center right;
+      background-size: 100% 100%;
+      content: '';
+    }
+  }
+}
+
+.on-map {
+  &___title {
+    margin-bottom: 20px;
+  }
+
+  &__map {
+    height: 500px;
+  }
+
+  &__loader {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: $ui-md) {
+  .contacts-list {
+    flex-direction: column;
+    align-items: center;
+
+    &__item {
+      width: 100%;
+      padding: 10px;
+
+      &:not(:last-child) {
+        margin-right: 0;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+
+@media (max-width: $ui-sm) {
+  .contacts-section {
+    &--bg {
+      &::before {
+        content: none;
+      }
+
+      &::after {
+        width: 231px;
+        height: 335px;
+      }
+    }
+  }
+
+  .write-us {
+    &__container {
+      flex-direction: column;
+    }
+
+    &--bg {
+      &::after {
+        top: 2%;
+        left: 57%;
+        width: 140px;
+        height: 140px;
+      }
+    }
+
+    &__title {
+      margin-right: 0;
+      text-align: start;
+    }
+  }
+}
+
+@media (max-width: $ui-xs) {
+  .contacts-section {
+    &__container {
+      padding-bottom: 150px;
+    }
+
+    &__decor-color-bg {
+      &-1 {
+        &::after {
+          content: none;
+        }
+
+        &::before {
+          top: -43px;
+          right: 95px;
+          width: 661px;
+          height: 524px;
+          transform: rotateZ(55deg);
+          opacity: 0.8;
+        }
+      }
+
+      &-2 {
+        &::after {
+          content: none;
+        }
+      }
+    }
+  }
+
+  .hero {
+    &__title {
+      margin-bottom: 20px;
+      padding-left: 0;
+    }
+
+    &__container {
+      padding-bottom: 60px;
+    }
+  }
+
+  .contacts-list {
+    &__item {
+      align-items: flex-start;
+      padding: 0;
+      background-color: transparent;
+    }
+
+    &__paragraph-1 {
+      margin-bottom: 0;
+    }
+  }
+
+  .write-us {
+    &__container {
+      padding-bottom: 60px;
+    }
+  }
+
+  .on-map {
+    &__map {
+      height: 300px;
+    }
+  }
+}

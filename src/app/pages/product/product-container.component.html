@@ -1,0 +1,18 @@
+<app-product
+  [previousUrl]="previousUrl"
+  [previousParams]="previousUrlParams"
+  [product]="product"
+  [productImages]="productImages"
+  [isPlatformBrowser]="isPlatformBrowser"
+  [activeIndexProductImage]="activeIndexProductImage"
+  [sliderOrientation]="sliderOrientation"
+  [offerProductsIsVisible]="offerProductsIsVisible"
+  [count]="count"
+  [countVisibleSlides]="countVisibleSlides"
+  (countChange)="onChangeCount($event)"
+  [productIsLoading]="productIsLoading"
+  [productError]="productError"
+  (emitRequestProduct)="repeatRequestProduct()"
+  (emitAddToCart)="addToCart()"
+  (emitSetActiveImage)="setActiveImage($event)"
+></app-product>

@@ -1,0 +1,7 @@
+<div>
+  <p class="price price--current" data-test="priceCurrent">{{ currentPrice | currency : 'RUB' }}</p>
+
+  <p class="price price--old" *ngIf="oldPrice" data-test="priceDiscount">
+    {{ oldPrice | currency : 'RUB' }}
+  </p>
+</div>

@@ -1,0 +1,9 @@
+@import 'colors';
+@import 'media';
+
+.reviews {
+  &__reviews-list {
+    display: block;
+    margin-bottom: 100px;
+  }
+}

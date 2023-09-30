@@ -1,0 +1,58 @@
+@import 'colors';
+
+.outgoing-block {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: $color-9;
+  transition: transform 0.3s;
+
+  &__wrapper-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  &--position {
+    &-left {
+      right: 100%;
+    }
+
+    &-right {
+      left: 100%;
+    }
+  }
+
+  &--opened {
+    &-left {
+      transform: translateX(100%);
+    }
+
+    &-right {
+      transform: translateX(-100%);
+    }
+  }
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: rgb($color: $color-9, $alpha: 50%);
+  cursor: pointer;
+
+  &--active {
+    display: block;
+  }
+}
+
+.visibility--hidden {
+  visibility: hidden;
+}

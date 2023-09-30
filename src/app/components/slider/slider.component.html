@@ -1,0 +1,24 @@
+<div class="slider" #slider [ngClass]="{ 'slider--orientation-verical': isVerticalOrientation }">
+  <div
+    class="slider__container"
+    (pointermove)="handlerPointerMove($event)"
+    (pointerdown)="handlerPointerDown($event)"
+    (pointerup)="handlerPointerUp()"
+    ondrag="() => false"
+  >
+    <div
+      #wrapper
+      class="slider__wrapper"
+      [ngStyle]="{
+        transform: isHorizontalOrientation
+          ? 'translateX(' + offsetSlidesCurrent + 'px)'
+          : 'translateY(' + offsetSlidesCurrent + 'px)',
+        transition: 'transform ' + animateDuration + 's'
+      }"
+    >
+      <ng-container #containerRef *ngIf="isVisibleContent">
+        <ng-content></ng-content>
+      </ng-container>
+    </div>
+  </div>
+</div>

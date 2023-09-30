@@ -1,0 +1,109 @@
+<footer class="footer">
+  <div class="container footer__container">
+    <a class="footer__logo-link logo-link" aria-label="На главную" routerLink="/">
+      <app-icon icon="logo"></app-icon>
+    </a>
+
+    <div class="footer__requisites requisites">
+      <h3 class="text-color--1">{{ data.requisites.title | uppercase }}</h3>
+
+      <p class="text-weight-300 text-line-height-1-6">
+        {{ data.requisites.descr | uppercase }}
+      </p>
+    </div>
+
+    <div class="footer__catalog catalog">
+      <h3 class="text-color--1">{{ data.catalog.title | uppercase }}</h3>
+
+      <ul class="list-reset catalog-list">
+        <li class="catalog-list__item" *ngFor="let category of data.catalog.categories">
+          <a
+            class="text-weight-300 text-line-height-1-6"
+            [queryParams]="{ category: category.paramValue }"
+            [routerLink]="['/catalog']"
+            >{{ category.title | uppercase }}</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__pages pages">
+      <a
+        class="text-color--1 pages__item"
+        *appForEntries="let route of data.nav"
+        [routerLink]="route.value.url"
+        >{{ route.value.title | uppercase }}</a
+      >
+    </div>
+
+    <address class="footer__address-block address-block">
+      <h3 class="visually-hidden text-color-accent-color">Наши контакты</h3>
+
+      <ul class="list-reset address-block__address-list address-list">
+        <li class="address-list__item">
+          <a
+            class="text-color--1 address-list__title text-line-height-1-6"
+            [href]="'mailto:' + data.contactsBlock.email.contact"
+            aria-label="Электронная почта"
+          >
+            {{ data.contactsBlock.email.contact | uppercase }}
+          </a>
+
+          <p class="text-weight-300 text-mini">
+            {{ data.contactsBlock.email.descr | uppercase }}
+          </p>
+        </li>
+
+        <li class="address-list__item">
+          <a
+            class="text-color--1 address-list__title text-line-height-1-6"
+            routerLink="/contacts"
+            fragment="map"
+            aria-label="Посмотреть на карте"
+          >
+            {{ data.contactsBlock.address.street | uppercase }}
+          </a>
+
+          <p class="text-weight-300 text-mini">
+            {{ data.contactsBlock.address.workTime | uppercase }}
+          </p>
+
+          <p class="text-weight-300 text-mini">
+            {{ data.contactsBlock.address.weekends | uppercase }}
+          </p>
+        </li>
+
+        <li class="address-list__item">
+          <a
+            class="text-color--1 address-list__title"
+            [href]="'tel:' + data.contactsBlock.phone.phone"
+          >
+            {{ data.contactsBlock.phone.phone | uppercase | mask : '+000 (00) 000-00-00' }}
+          </a>
+
+          <p class="text-weight-300 text-mini">
+            {{ data.contactsBlock.phone.descr | uppercase }}
+          </p>
+        </li>
+
+        <li class="address-list__item">
+          <a class="address-list__link text-line-height-1-6" href="#" aria-label="Инстаграм"
+            ><app-icon icon="instagram"></app-icon
+          ></a>
+
+          <a class="address-list__link" href="#" aria-label="Вотсап">
+            <app-icon icon="whatsapp"></app-icon
+          ></a>
+
+          <a
+            class="address-list__link"
+            [href]="'tel:' + data.contactsBlock.phone.phone"
+            aria-label="Позвонить"
+          >
+            <app-icon icon="phone"></app-icon>
+          </a>
+        </li>
+      </ul>
+    </address>
+  </div>
+</footer>

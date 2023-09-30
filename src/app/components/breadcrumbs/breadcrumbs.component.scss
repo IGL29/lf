@@ -1,0 +1,41 @@
+@import 'colors';
+
+:host {
+  display: inline-block;
+}
+
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  line-height: 1.6;
+
+  &__breadcrumb-item {
+    position: relative;
+
+    &:not(:last-child) {
+      margin-right: 1em;
+
+      &::after {
+        position: absolute;
+        top: 50%;
+        right: -0.7em;
+        transform: translateY(-50%);
+        content: '/';
+      }
+    }
+  }
+}
+
+.breadcrumb-item {
+  &__link {
+    transition: color 0.3s;
+
+    &:hover {
+      color: rgb($color: $color-1, $alpha: 90%);
+    }
+
+    &:active {
+      color: rgb($color: $color-1, $alpha: 70%);
+    }
+  }
+}

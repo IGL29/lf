@@ -1,0 +1,73 @@
+@import 'colors';
+@import 'media';
+
+.popular-section__loader {
+  grid-column: 2/3;
+  margin: 0 auto;
+}
+
+.slider {
+  &__card {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+.wrapper-slider {
+  display: grid;
+  grid-template-columns: 80px 1fr 80px;
+  padding-right: 20px;
+  padding-left: 20px;
+
+  &__slider {
+    order: 2;
+    height: 100%;
+    margin: 0 auto;
+  }
+
+  &__btn-prev {
+    align-self: center;
+    order: 1;
+    padding: 20px 5px;
+  }
+
+  &__btn-next {
+    align-self: center;
+    order: 3;
+    padding: 20px 5px;
+  }
+}
+
+@media (max-width: $ui-md) {
+  .wrapper-slider {
+    padding-right: 10px;
+    padding-left: 10px;
+
+    &__btn-prev {
+      width: 60px;
+    }
+
+    &__btn-next {
+      width: 60px;
+    }
+  }
+}
+
+@media (max-width: $ui-sm) {
+  .wrapper-slider {
+    grid-template-columns: 1fr;
+
+    &__slider {
+      padding-right: 10px;
+      padding-left: 10px;
+    }
+
+    &__btn-prev {
+      display: none;
+    }
+
+    &__btn-next {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+:host {
+  display: block;
+}
+
+.accordion {
+  &__btn {
+    width: 100%;
+    padding: 16px 20px;
+    text-align: start;
+    border-radius: 10px;
+  }
+}

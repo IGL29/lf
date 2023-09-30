@@ -1,0 +1,35 @@
+<div class="faq faq--bg">
+  <div class="faq__decor-color-bg-top"></div>
+  <div class="faq__decor-color-bg-bottom"></div>
+
+  <div class="faq__container container container--pt">
+    <app-breadcrumbs
+      class="faq__breadcrumbs"
+      [links]="data.breadcrumbs"
+    ></app-breadcrumbs>
+
+    <h1 class="faq__title section-title">{{ data.title }}</h1>
+
+    <div class="faq__accordion-wrapper">
+      <ul class="list-reset accordion-list">
+        <li class="accordion-list__item" *ngFor="let item of data.faq">
+          <app-accordion class="accordion" #accordion>
+            <button
+              slot="button"
+              class="accordion__btn"
+              [ngClass]="{ 'accordion__btn--active': accordion.isOpen }"
+            >
+              {{ item.question }}
+            </button>
+
+            <ng-template slot="content" #bodyContent>
+              <p class="accordion__text">
+                {{ item.answer }}
+              </p>
+            </ng-template>
+          </app-accordion>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

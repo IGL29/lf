@@ -1,0 +1,143 @@
+@import 'media';
+
+.hero {
+  position: relative;
+  height: 0;
+  min-height: 100vh;
+  padding-bottom: 86%;
+
+  &__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: top;
+    transform: scale(1.1);
+  }
+
+  &--bg {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    &::after {
+      position: absolute;
+      right: 10%;
+      bottom: 10%;
+      width: 20%;
+      height: 200px;
+      background-image: image-set(
+        url('/assets/images/pages/main/lover-flower-green-bg.webp') type('image/webp'),
+        url('/assets/images/pages/main/lover-flower-green-bg.png')
+      );
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      content: '';
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 135px;
+  }
+
+  &__btn {
+    align-self: center;
+  }
+}
+
+.title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: 300;
+  font-size: 200px;
+  font-family: 'Cormorant', sans-serif;
+  line-height: 0.8;
+  letter-spacing: 30px;
+  text-align: center;
+  word-spacing: 100vw;
+
+  &--mb {
+    margin-bottom: 50px;
+  }
+}
+
+.slogan {
+  font-size: 20px;
+  text-align: center;
+
+  &--mb {
+    margin-bottom: 50px;
+  }
+}
+
+@media (width <= 1200px) {
+  .title {
+    font-size: 140px;
+  }
+}
+
+@media (max-width: $ui-md) {
+  .title {
+    font-size: 100px;
+    letter-spacing: 20px;
+  }
+
+  .slogan {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: $ui-sm) {
+  .title {
+    font-size: 70px;
+    letter-spacing: 10px;
+  }
+
+  .slogan {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: $ui-xs) {
+  .title {
+    font-size: 42px;
+    letter-spacing: 5px;
+
+    &--mb {
+      margin-bottom: 100%;
+    }
+  }
+
+  .slogan {
+    align-self: center;
+    max-width: 235px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .hero {
+    height: initial;
+    min-height: initial;
+    padding-bottom: 0;
+    background-position: top;
+    background-size: contain;
+
+    &--bg::after {
+      right: 5%;
+      bottom: 15%;
+    }
+  }
+
+  .hero__container {
+    height: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}

@@ -1,0 +1,7 @@
+<app-catalog
+  [products]="products"
+  [isProductsLoading]="productsIsLoading"
+  [productsError]="productsError"
+  (emitAddToCart)="addToCart($event)"
+  (emitRequestProducts)="repeatRequestProducts()"
+></app-catalog>

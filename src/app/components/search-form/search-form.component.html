@@ -1,0 +1,16 @@
+<form class="form-search" #form="ngForm" (ngSubmit)="handlerSubmit(form)">
+  <button class="btn-reset btn-search form-search__btn-search outline-focus" aria-label="Найти">
+    <app-icon class="btn-search__icon" icon="search"></app-icon>
+  </button>
+
+  <input
+    class="field field--mini field--border-transparent field--color-light field--placeholder-uppercase form-search__input"
+    type="search"
+    placeholder="ПОИСК"
+    [(ngModel)]="inputSearchValue"
+    name="search"
+    appEmpty
+    required
+    aria-label="Поиск товара по ключевому слову"
+  />
+</form>

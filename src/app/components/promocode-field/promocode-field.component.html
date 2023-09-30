@@ -1,0 +1,19 @@
+<div class="promocode">
+  <input
+    class="promocode__input field field--default field--focus-default field--hover-default"
+    type="text"
+    placeholder="Промокод"
+    name="promocode"
+    [formControl]="promocodeControl"
+    appEmpty
+  />
+
+  <button
+    class="promocode__btn text-uppercase"
+    (click)="handlerClick()"
+    type="button"
+    appUiButton="2"
+  >
+    Применить
+  </button>
+</div>

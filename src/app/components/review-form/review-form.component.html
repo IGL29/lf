@@ -1,0 +1,118 @@
+<form class="review-form" [formGroup]="reviewForm" (ngSubmit)="handlerSubmit()">
+  <app-loader class="review-form__loader" *ngIf="isLoading" text="Удивляемся отзыву"></app-loader>
+
+  <ng-container *ngIf="isExistReviews && !isReviewsLoading">
+    <h3 class="review-form__title text-uppercase text-color--1">
+      Оставьте свой отзыв на “Рубиновые искры”
+    </h3>
+
+    <p class="review-form__paragraph-1">
+      Ваш адрес email не будет опубликован. Обязательные поля помечены *
+    </p>
+  </ng-container>
+
+  <ng-template *ngIf="!isExistReviews && !isReviewsLoading">
+    <div class="reviews__empty-reviews-wrapper empty-reviews-wrapper">
+      <h3 class="text-color--1 text-uppercase empty-reviews-wrapper__text-1">
+        Будьте первым, кто оставил отзыв на “Рубиновые искры”
+      </h3>
+
+      <p class="empty-reviews-wrapper__text-2">
+        Ваш адрес email не будет опубликован. Обязательные поля помечены *
+      </p>
+    </div>
+  </ng-template>
+
+  <label class="review-form__rating-label">
+    <p class="review-form__paragraph-2">Ваша оценка:</p>
+
+    <app-rating formControlName="rating"></app-rating>
+
+    <app-error-field
+      [isRequiredRadio]="!!(isFormSubmitted && ratingControl?.hasError('required'))"
+    ></app-error-field>
+  </label>
+
+  <label class="review-form__label label">
+    <p class="label__text">Ваш отзыв*</p>
+
+    <textarea
+      class="review-form__textarea field field--default resize--none"
+      [ngClass]="{
+        'field--not-empty': commentControl?.value,
+        'field--error':
+          (isFormSubmitted || commentControl?.touched) &&
+          (!commentControl?.value || commentControl?.hasError('empty'))
+      }"
+      placeholder="Введите комментарий"
+      formControlName="comment"
+    ></textarea>
+
+    <app-error-field
+      [isEmpty]="
+        !!((isFormSubmitted || commentControl?.touched) && commentControl?.hasError('empty'))
+      "
+      [isRequired]="!!((isFormSubmitted || commentControl?.touched) && !commentControl?.value)"
+    ></app-error-field>
+  </label>
+
+  <label class="review-form__label label">
+    <p class="label__text">Имя*</p>
+
+    <input
+      class="review-form__input field field--default"
+      [ngClass]="{
+        'field--not-empty': authorControl?.value,
+        'field--error':
+          (isFormSubmitted || authorControl?.touched) &&
+          (!authorControl?.value || authorControl?.hasError('empty'))
+      }"
+      type="text"
+      placeholder="Введите ваше имя"
+      formControlName="author"
+    />
+
+    <app-error-field
+      [isEmpty]="
+        !!((isFormSubmitted || authorControl?.touched) && authorControl?.hasError('empty'))
+      "
+      [isRequired]="!!((isFormSubmitted || authorControl?.touched) && !authorControl?.value)"
+    ></app-error-field>
+  </label>
+
+  <label class="review-form__label label">
+    <p class="label__text">E-mail*</p>
+
+    <input
+      class="review-form__input field field--default"
+      [ngClass]="{
+        'field--not-empty': emailControl?.value,
+        'field--error':
+          (isFormSubmitted || emailControl?.touched) &&
+          (!emailControl?.value || emailControl?.hasError('email'))
+      }"
+      type="text"
+      placeholder="Введите вашу почту"
+      formControlName="email"
+    />
+
+    <app-error-field
+      [isInvalidEmail]="
+        !!((isFormSubmitted || emailControl?.touched) && emailControl?.hasError('email'))
+      "
+      [isRequired]="!!((isFormSubmitted || emailControl?.touched) && !emailControl?.value)"
+    ></app-error-field>
+  </label>
+
+  <app-error-block *ngIf="error"></app-error-block>
+
+  <button class="review-form__btn text-uppercase" appUiButton="1">отправить</button>
+
+  <p class="review-form__paragraph-3 paragraph-3">
+    Нажимая на кнопку «Отправить», я даю свое согласие на обработку персональных данных, в
+    соответствии с
+    <a class="paragraph-3__link text-color--3 link outline-focus" routerLink=""
+      >Политикой конфиденциальности.</a
+    >
+  </p>
+</form>

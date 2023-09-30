@@ -1,0 +1,32 @@
+<div class="counter">
+  <button
+    class="counter__counter-btn counter-btn btn-reset outline-focus"
+    (click)="doDecrement()"
+    aria-label="Уменьшить"
+    [disabled]="isDisabledDecrButton"
+  >
+    -
+  </button>
+
+  <input
+    class="counter__input outline-focus"
+    type="number"
+    [id]="id"
+    [max]="max"
+    [step]="step"
+    [formControl]="countControl"
+    (focusout)="onTouched()"
+    data-test="input"
+  />
+
+  <label [attr.for]="id" class="visually-hidden">{{ labelValueA11y }}</label>
+
+  <button
+    class="counter__counter-btn counter-btn btn-reset outline-focus"
+    (click)="doIncrement()"
+    aria-label="Увеличить"
+    [disabled]="isDisabledIncButton"
+  >
+    +
+  </button>
+</div>

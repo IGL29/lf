@@ -1,0 +1,11 @@
+<app-cart-menu
+  [inCartProducts]="inCartProducts"
+  [offerProducts]="recommendedProducts"
+  [isOfferProductsLoading]="isOfferProductsLoading"
+  [cartPrice]="cartPrice"
+  (emitAddToCart)="addToCart($event)"
+  (emitChangeProductCount)="onChangeProductCount($event)"
+  (emitDeleteFromCart)="deleteFromCart($event)"
+  (emitCloseMenu)="closeMenu()"
+  data-test="cartMenu"
+></app-cart-menu>

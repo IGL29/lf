@@ -1,0 +1,177 @@
+<div class="product">
+  <div class="product__decor-color-bg-1"></div>
+  <div class="product__decor-color-bg-2"></div>
+  <div class="product__decor-color-bg-3"></div>
+
+  <div class="product__container container--pt">
+    <app-breadcrumbs class="product__breadcrumbs container" [links]="breadcrumbs"></app-breadcrumbs>
+
+    <app-error-block
+      class="container product__error"
+      *ngIf="productError"
+      (emitRepeatRequest)="repeatRequestProduct()"
+    ></app-error-block>
+
+    <div class="container">
+      <app-loader
+        class="product__loader"
+        *ngIf="productIsLoading"
+        text="Печатаем страницу"
+      ></app-loader>
+    </div>
+
+    <ng-container *ngIf="product && !productIsLoading">
+      <div class="product__product-section product-section">
+        <div class="product-section__about-product about-product container">
+          <div class="about-product__product-images-wrapper product-images-wrapper">
+            <div class="product-images-wrapper__images-slider images-slider">
+              <ng-container *ngIf="isPlatformBrowser && productImages && productImages.length">
+                <button
+                  aria-label="Предыдущие слайды"
+                  class="images-slider__control-btn control-btn control-btn--prev btn-reset arrow-mini outline-focus"
+                  (click)="imagesSlider.prevStep()"
+                ></button>
+
+                <app-slider
+                  #imagesSlider
+                  class="images-slider__slider"
+                  [step]="2"
+                  [countVisibleSlides]="_countVisibleSlides"
+                  [spaceBetweenSlides]="spaceBetweenSlides"
+                  [orientation]="sliderOrientation"
+                >
+                  <app-slide *ngFor="let image of productImages; let index = index">
+                    <div class="product-images-wrapper__slide-content-wrapper">
+                      <button
+                        class="btn-reset outline-focus product-images-wrapper__slide-btn slide-btn"
+                        [ngClass]="{ 'slide-btn--active': activeIndexProductImage === index }"
+                        aria-label="Выбрать фотографию для просмотра"
+                        (click)="setActiveImage(index)"
+                      >
+                        <img
+                          appImageUploadStatus
+                          class="product-images-wrapper__slide-image"
+                          [src]="image"
+                          [alt]="product.title"
+                        />
+                      </button>
+                    </div>
+                  </app-slide>
+                </app-slider>
+
+                <button
+                  aria-label="Следующие слайды"
+                  class="images-slider__control-btn control-btn control-btn--next btn-reset arrow-mini outline-focus"
+                  (click)="imagesSlider.prevStep()"
+                ></button>
+              </ng-container>
+            </div>
+
+            <div class="product-images-wrapper__wrapper-image wrapper-image">
+              <img
+                class="wrapper-image__image"
+                [src]="productImages?.[activeIndexProductImage]"
+                [alt]="product.title"
+              />
+            </div>
+          </div>
+
+          <div class="about-product__descr-product descr-product">
+            <a
+              class="descr-product__link arrow-mini box-shadow-focus"
+              [routerLink]="[previousUrl]"
+              [queryParams]="previousParams"
+              routerLinkActive="router-link-active"
+              >назад
+            </a>
+
+            <h1 class="descr-product__title text-uppercase">
+              {{ product.title }}
+            </h1>
+
+            <app-price class="descr-product__price" [price]="product.price"></app-price>
+
+            <p class="descr-product__descr-paragraph-2 text-line-height-1-6">
+              {{ product.descr }}
+            </p>
+
+            <p class="descr-product__descr-paragraph-3 text-line-height-1-6">
+              <span class="descr-product__subtitle text-weight-600">{{ data.categories }}</span>
+              <span
+                class="text-weight-300 descr-product__item"
+                *ngFor="let category of product.categories"
+                >{{ category | categoryName }}</span
+              >
+            </p>
+
+            <div class="descr-product__wrapper-controls wrapper-controls">
+              <button
+                class="wrapper-controls__btn text-uppercase"
+                appUiButton="2"
+                (click)="addToCart()"
+              >
+                В корзину
+              </button>
+
+              <app-counter
+                [value]="count"
+                (valueChange)="onChange($event)"
+                class="wrapper-controls__counter"
+                (emitDecrValue)="handlerCounter($event)"
+                (emitIncrValue)="handlerCounter($event)"
+                [min]="minCount"
+              ></app-counter>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="product__additionally additionally">
+        <div class="additionally__container container">
+          <h2 class="additionally__title text-color--3 text-uppercase">
+            {{ data.section.additionally.title }}
+          </h2>
+
+          <ul class="additionally__additionally-list additionally-list list-reset">
+            <li
+              class="additionally-list__additionally-item additionally-item card-background"
+              *ngFor="let item of data.section.additionally.list"
+            >
+              <h3 class="additionally-item__title text-uppercase text-color--1">
+                {{ item.title }}
+              </h3>
+
+              <p class="additionally-item__paragraph">
+                {{ item.text }}
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <div class="product__tabs tabs tabs--bg">
+        <div class="tabs__container container">
+          <app-tabs>
+            <app-tab tabTitle="Доставка и оплата">
+              <app-delivery></app-delivery>
+            </app-tab>
+
+            <app-tab tabTitle="отзывы" [isCache]="true">
+              <ng-template>
+                <app-reviews></app-reviews>
+              </ng-template>
+            </app-tab>
+          </app-tabs>
+        </div>
+      </div>
+
+      <div class="product__offer offer" *ngIf="offerProductsIsVisible && isPlatformBrowser">
+        <div class="offer__container container">
+          <h2 class="offer__title text-color--1 text-uppercase">вам может понравиться:</h2>
+        </div>
+
+        <app-products-offer-container></app-products-offer-container>
+      </div>
+    </ng-container>
+  </div>
+</div>

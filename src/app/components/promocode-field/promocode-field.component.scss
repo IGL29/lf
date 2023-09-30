@@ -1,0 +1,16 @@
+:host {
+  display: block;
+}
+
+.promocode {
+  display: flex;
+
+  &__input {
+    margin-right: 20px;
+    font-size: 19px;
+
+    &::placeholder {
+      font-size: 18px;
+    }
+  }
+}

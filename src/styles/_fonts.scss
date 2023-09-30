@@ -1,0 +1,53 @@
+@font-face {
+  font-weight: 300;
+  font-family: 'Cormorant';
+  src:
+    url('/assets/fonts/Cormorant-Light.woff2') format('woff2'),
+    url('/assets/fonts/Cormorant-Light.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: 400;
+  font-family: 'Cormorant';
+  src:
+    url('/assets/fonts/Cormorant-Regular.woff2') format('woff2'),
+    url('/assets/fonts/Cormorant-Regular.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: 200;
+  font-family: 'Oswald';
+  src:
+    url('/assets/fonts/Oswald-ExtraLight.woff2') format('woff2'),
+    url('/assets/fonts/Oswald-ExtraLight.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: 300;
+  font-family: 'Oswald';
+  src:
+    url('/assets/fonts/Oswald-Light.woff2') format('woff2'),
+    url('/assets/fonts/Oswald-Light.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: 400;
+  font-family: 'Oswald';
+  src:
+    url('/assets/fonts/Oswald-Regular.woff2') format('woff2'),
+    url('/assets/fonts/Oswald-Regular.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: 700;
+  font-family: 'Oswald';
+  src:
+    url('/assets/fonts/Oswald-Bold.woff2') format('woff2'),
+    url('/assets/fonts/Oswald-Bold.woff') format('woff');
+  font-display: swap;
+}

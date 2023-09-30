@@ -1,0 +1,28 @@
+<div class="product-card">
+  <app-badge
+    class="product-card__badge"
+    *ngIf="product?.isNew || product.price.discount"
+    [bgColor]="product | productBadgeColor"
+    [text]="product | productBadgeText"
+  ></app-badge>
+
+  <div class="product-card__img-wrapper img-wrapper">
+    <a
+      appImageUploadStatus
+      class="img-wrapper__link outline-focus"
+      [routerLink]="['/product', product.id]"
+    >
+      <img class="img-wrapper__img" [src]="product.images.main" [alt]="product.title" />
+    </a>
+  </div>
+
+  <h3 class="product-card__title">
+    <a class="outline-focus" [routerLink]="['/product', product.id]">
+      {{ product.title | uppercase }}
+    </a>
+  </h3>
+
+  <app-price class="product-card__price" [price]="product.price"></app-price>
+
+  <ng-content slot="btn"></ng-content>
+</div>

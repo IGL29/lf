@@ -1,0 +1,31 @@
+<div class="not-found">
+  <div class="not-found__decor-color-bg-1"></div>
+  <div class="not-found__decor-color-bg-2"></div>
+
+  <div class="not-found__container container">
+    <p class="not-found__decor-text decor-text">
+      <span class="decor-text__letter letter-1">{{ data.title.part }}</span>
+
+      <span class="decor-text__letter letter-2">{{ data.title.part2 }}</span>
+
+      <span class="decor-text__letter letter-3">{{ data.title.part3 }}</span>
+    </p>
+
+    <div class="not-found__container-text container-text">
+      <div class="not-found__wrapper-text wrapper-text">
+        <h1 class="wrapper-text__title text-uppercase">{{ data.text }}</h1>
+
+        <p class="wrapper-text__paragraph text-uppercase">
+          {{ data.text2 }}
+        </p>
+
+        <a
+          routerLink="/"
+          routerLinkActive="router-link-active"
+          class="wrapper-text__link text-uppercase text-color--1"
+          >{{ data.link }}</a
+        >
+      </div>
+    </div>
+  </div>
+</div>

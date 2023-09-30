@@ -1,0 +1,49 @@
+<div class="popular-section__wrapper-slider wrapper-slider">
+  <app-loader
+    *ngIf="isLoading"
+    class="popular-section__loader"
+    text="фотографируем..."
+    data-test="loader"
+  ></app-loader>
+
+  <ng-container *ngIf="productsNotEmpty">
+    <app-slider
+      class="wrapper-slider__slider container"
+      #popularProductsSlider
+      [step]="3"
+      [countVisibleSlides]="countVisibleSlides"
+      [spaceBetweenSlides]="30"
+      data-test="slider"
+    >
+      <app-slide *ngFor="let product of products">
+        <app-product-card [product]="product" class="slider__card" data-test="product">
+          <button
+            appUiButton="2"
+            #btn
+            class="text-uppercase"
+            (click)="addToCart({product, count: 1})"
+            data-test="btnAddToCart"
+          >
+            В корзину
+          </button>
+        </app-product-card>
+      </app-slide>
+    </app-slider>
+
+    <button
+      class="wrapper-slider__btn-prev btn-prev btn-reset outline-focus"
+      (click)="popularProductsSlider.prevStep()"
+      aria-label="Предыдущие слайды"
+    >
+      <app-icon class="btn-prev__icon" width="full" icon="arrow-right"></app-icon>
+    </button>
+
+    <button
+      class="wrapper-slider__btn-next btn-next btn-reset outline-focus"
+      (click)="popularProductsSlider.nextStep()"
+      aria-label="Следующие слайды"
+    >
+      <app-icon icon="arrow-right" width="full"></app-icon>
+    </button>
+  </ng-container>
+</div>

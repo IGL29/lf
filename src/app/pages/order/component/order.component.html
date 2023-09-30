@@ -1,0 +1,535 @@
+<div class="order">
+  <div class="order__bg-top"></div>
+
+  <div class="order__container container--pt">
+    <div class="order__hero hero">
+      <div class="container">
+        <app-breadcrumbs class="hero__breadcrumbs" [links]="data.breadcrumbs"></app-breadcrumbs>
+
+        <h1 class="hero__title section-title text-uppercase">
+          {{ data.title }}
+        </h1>
+      </div>
+    </div>
+
+    <div
+      class="order__content content"
+      *ngIf="cartProductCount"
+      [@fadeAnimation]
+      [@expandAnimation]
+    >
+      <app-loader class="order__loader" *ngIf="orderIsLoading" text="Оформляем заказ"></app-loader>
+
+      <div class="content__container container">
+        <form
+          class="content__order-form order-form"
+          [formGroup]="orderForm"
+          (ngSubmit)="handlerSubmitOrderForm()"
+        >
+          <h2 class="order-form__title text-color--1 text-uppercase">
+            {{ data.subtitle }}
+          </h2>
+
+          <fieldset class="order-form__fieldset" formGroupName="user">
+            <legend class="order-form__legend text-color--1 text-uppercase">
+              {{ data.formTitle }}
+            </legend>
+
+            <label class="order-form__label"
+              ><p class="order-form__label-text">
+                {{ data.fields.name.title }}
+              </p>
+
+              <input
+                class="field field--default field--focus-default field--hover-default"
+                [ngClass]="{
+                  'field--not-empty': userNameControl?.value,
+                  'field--error':
+                    (isFormSubmitted || userNameControl?.touched) &&
+                    (userNameControl?.hasError('empty') || !userNameControl?.value)
+                }"
+                type="text"
+                id="inputName"
+                [placeholder]="data.fields.name.descr"
+                formControlName="firstName"
+                autocomplete="given-name"
+              />
+
+              <app-error-field
+                ariaDescribedby="inputName"
+                [isEmpty]="
+                  !!(
+                    (isFormSubmitted || userNameControl?.touched) &&
+                    userNameControl?.hasError('empty')
+                  )
+                "
+                [isRequired]="
+                  !!((isFormSubmitted || userNameControl?.touched) && !userNameControl?.value)
+                "
+              ></app-error-field>
+            </label>
+
+            <label class="order-form__label"
+              ><p class="order-form__label-text">
+                {{ data.fields.phone.title }}
+              </p>
+
+              <input
+                class="field field--default field--focus-default field--hover-default"
+                [ngClass]="{
+                  'field--not-empty': userPhoneControl?.value,
+                  'field--error':
+                    (isFormSubmitted || userPhoneControl?.touched) &&
+                    (userPhoneControl?.hasError('minlength') || !userPhoneControl?.value)
+                }"
+                type="text"
+                id="inputPhone"
+                [placeholder]="data.fields.phone.descr"
+                formControlName="phone"
+                mask="+0 (000) 000-00-00"
+                autocomplete="tel"
+              />
+
+              <app-error-field
+                ariaDescribedby="inputPhone"
+                [isInvalidPhone]="
+                  !!(
+                    (isFormSubmitted || userPhoneControl?.touched) &&
+                    userPhoneControl?.hasError('minlength')
+                  )
+                "
+                [isRequired]="
+                  !!((isFormSubmitted || userPhoneControl?.touched) && !userPhoneControl?.value)
+                "
+              ></app-error-field>
+            </label>
+
+            <label class="order-form__label"
+              ><p class="order-form__label-text">
+                {{ data.fields.email.title }}
+              </p>
+
+              <input
+                class="field field--default field--focus-default field--hover-default"
+                [ngClass]="{
+                  'field--not-empty': userEmailControl?.value,
+                  'field--error':
+                    (isFormSubmitted || userEmailControl?.touched) &&
+                    (userEmailControl?.hasError('email') || !userEmailControl?.value)
+                }"
+                id="inputEmail"
+                type="text"
+                [placeholder]="data.fields.email.descr"
+                formControlName="email"
+                autocomplete="email"
+              />
+
+              <app-error-field
+                ariaDescribedby="inputEmail"
+                [isInvalidEmail]="
+                  !!(
+                    (isFormSubmitted || userEmailControl?.touched) &&
+                    userEmailControl?.hasError('email')
+                  )
+                "
+                [isRequired]="
+                  !!((isFormSubmitted || userEmailControl?.touched) && !userEmailControl?.value)
+                "
+              ></app-error-field>
+            </label>
+
+            <ng-container formGroupName="recipient">
+              <label class="order-form__label"
+                ><p class="order-form__label-text">
+                  {{ data.fields.recipientPhone.title }}
+                </p>
+                <input
+                  class="field field--default field--focus-default field--hover-default"
+                  [ngClass]="{
+                    'field--not-empty': recipientPhoneControl?.value,
+                    'field--error':
+                      (isFormSubmitted || recipientPhoneControl?.touched) &&
+                      recipientPhoneControl?.hasError('minlength')
+                  }"
+                  type="text"
+                  id="inputRecipientPhone"
+                  [placeholder]="data.fields.recipientPhone.descr"
+                  formControlName="phone"
+                  mask="+0 (000) 000-00-00"
+                />
+
+                <app-error-field
+                  ariaDescribedby="inputRecipientPhone"
+                  [isInvalidPhone]="
+                    !!(
+                      (isFormSubmitted || recipientPhoneControl?.touched) &&
+                      recipientPhoneControl?.hasError('minlength')
+                    )
+                  "
+                ></app-error-field>
+              </label>
+
+              <label class="order-form__label"
+                ><p class="order-form__label-text">
+                  {{ data.fields.recipientName.title }}
+                </p>
+
+                <input
+                  class="field field--default field--focus-default field--hover-default"
+                  [ngClass]="{
+                    'field--not-empty': recipientNameControl?.value
+                  }"
+                  type="text"
+                  [placeholder]="data.fields.recipientName.descr"
+                  formControlName="firstName"
+                />
+              </label>
+            </ng-container>
+
+            <label class="order-form__label"
+              ><p class="order-form__label-text">
+                {{ data.fields.comment.title }}
+              </p>
+
+              <input
+                class="field field--default field--focus-default field--hover-default"
+                [ngClass]="{
+                  'field--not-empty': commentControl?.value,
+                  'field--error':
+                    (isFormSubmitted || commentControl?.touched) &&
+                    (commentControl?.hasError('empty') || !commentControl?.value)
+                }"
+                id="inputComment"
+                type="text"
+                [placeholder]="data.fields.comment.descr"
+                formControlName="comment"
+              />
+
+              <app-error-field
+                ariaDescribedby="inputComment"
+                [isEmpty]="
+                  !!(
+                    (isFormSubmitted || commentControl?.touched) &&
+                    commentControl?.hasError('empty')
+                  )
+                "
+                [isRequired]="
+                  !!((isFormSubmitted || commentControl?.touched) && !commentControl?.value)
+                "
+              ></app-error-field>
+            </label>
+          </fieldset>
+
+          <fieldset class="order-form__fieldset" formGroupName="delivery">
+            <legend class="order-form__legend text-color--1 text-uppercase">
+              {{ data.fields.delivery.title }}
+            </legend>
+
+            <app-radio-button
+              class="order-form__radio-wrapper"
+              formControlName="method"
+              id="radioPickupMethod"
+              attrValue="pickup"
+              attrName="method"
+              labelValue="Самовывоз"
+            ></app-radio-button>
+
+            <app-radio-button
+              class="order-form__radio-wrapper"
+              formControlName="method"
+              id="radioCourierMethod"
+              attrValue="courier"
+              attrName="method"
+              labelValue="Доставка курьером"
+            ></app-radio-button>
+
+            <app-error-field
+              ariaDescribedby="radioPickupMethod radioCourierMethod"
+              [isRequiredRadio]="!!(isFormSubmitted && deliveryMethodControl?.hasError('required'))"
+            ></app-error-field>
+
+            <div
+              class="order-form__delivery-fields-wrapper"
+              *ngIf="isDeliveryByCourier"
+              [@expandAnimation]
+            >
+              <label class="order-form__label"
+                ><p class="order-form__label-text">
+                  {{ data.fields.street.title }}
+                </p>
+
+                <input
+                  class="field field--default field--focus-default field--hover-default"
+                  [ngClass]="{
+                    'field--not-empty': deliveryStreetControl?.value,
+                    'field--error':
+                      (isFormSubmitted || deliveryStreetControl?.touched) &&
+                      (!deliveryStreetControl?.value || deliveryStreetControl?.hasError('empty'))
+                  }"
+                  id="inputStreet"
+                  type="text"
+                  [placeholder]="data.fields.street.descr"
+                  formControlName="street"
+                />
+
+                <app-error-field
+                  ariaDescribedby="inputStreet"
+                  [isEmpty]="
+                    !!(
+                      (isFormSubmitted || deliveryStreetControl?.touched) &&
+                      deliveryStreetControl?.hasError('empty')
+                    )
+                  "
+                  [isRequired]="
+                    !!(
+                      (isFormSubmitted || deliveryStreetControl?.touched) &&
+                      !deliveryStreetControl?.value
+                    )
+                  "
+                ></app-error-field>
+              </label>
+
+              <div>
+                <label class="order-form__label"
+                  ><p class="order-form__label-text">
+                    {{ data.fields.building.title }}
+                  </p>
+
+                  <input
+                    class="field field--default field--focus-default field--hover-default"
+                    [ngClass]="{
+                      'field--not-empty': deliveryBuildingControl?.value,
+                    }"
+                    type="text"
+                    [placeholder]="data.fields.building.descr"
+                    formControlName="building"
+                  />
+                </label>
+
+                <label class="order-form__label"
+                  ><p class="order-form__label-text">
+                    {{ data.fields.house.title }}
+                  </p>
+
+                  <input
+                    class="field field--default field--focus-default field--hover-default"
+                    [ngClass]="{
+                      'field--not-empty': deliveryHouseControl?.value,
+                      'field--error':
+                        (isFormSubmitted || deliveryHouseControl?.touched) &&
+                        (!deliveryHouseControl?.value || deliveryHouseControl?.hasError('empty'))
+                    }"
+                    id="inputHouse"
+                    type="text"
+                    [placeholder]="data.fields.house.descr"
+                    formControlName="house"
+                  />
+
+                  <app-error-field
+                    ariaDescribedby="inputHouse"
+                    [isEmpty]="
+                      !!(
+                        (isFormSubmitted || deliveryHouseControl?.touched) &&
+                        deliveryHouseControl?.hasError('empty')
+                      )
+                    "
+                    [isRequired]="
+                      !!(
+                        (isFormSubmitted || deliveryHouseControl?.touched) &&
+                        !deliveryHouseControl?.value
+                      )
+                    "
+                  ></app-error-field>
+                </label>
+
+                <label class="order-form__label"
+                  ><p class="order-form__label-text">
+                    {{ data.fields.apartment.title }}
+                  </p>
+
+                  <input
+                    class="field field--default field--focus-default field--hover-default"
+                    [ngClass]="{
+                      'field--not-empty': deliveryFlatControl?.value
+                    }"
+                    type="text"
+                    [placeholder]="data.fields.apartment.descr"
+                    formControlName="flat"
+                  />
+                </label>
+              </div>
+
+              <label class="order-form__label"
+                ><p class="order-form__label-text">
+                  {{ data.fields.deliveryTime.title }}
+                </p>
+
+                <input
+                  class="field field--default field--focus-default field--hover-default"
+                  [ngClass]="{
+                    'field--not-empty': deliveryTimeControl?.value,
+                    'field--error':
+                      (deliveryTimeControl?.touched || isFormSubmitted) &&
+                      (!deliveryTimeControl?.value || deliveryTimeControl?.hasError('time'))
+                  }"
+                  id="inputTime"
+                  type="input"
+                  [placeholder]="data.fields.deliveryTime.descr"
+                  formControlName="time"
+                  mask="00:00"
+                />
+
+                <app-error-field
+                  ariaDescribedby="inputTime"
+                  [isRequired]="
+                    !!(
+                      (isFormSubmitted || deliveryTimeControl?.touched) &&
+                      !deliveryTimeControl?.value
+                    )
+                  "
+                  [isInvalidTime]="
+                    !!(
+                      (isFormSubmitted || deliveryTimeControl?.touched) &&
+                      deliveryTimeControl?.hasError('time')
+                    )
+                  "
+                ></app-error-field>
+              </label>
+
+              <p class="text-uppercase">
+                {{ data.fields.deliveryTime.shippingCost }}: {{ deliveryPrice | currency : 'RUB' }}
+              </p>
+            </div>
+          </fieldset>
+
+          <fieldset class="order-form__fieldset">
+            <legend class="order-form__legend text-color--1 text-uppercase">Оплата</legend>
+
+            <app-radio-button
+              class="order-form__radio-wrapper"
+              formControlName="payment"
+              attrValue="card"
+              attrName="payment"
+              labelValue="Банковская карта"
+            ></app-radio-button>
+
+            <app-radio-button
+              class="order-form__radio-wrapper"
+              formControlName="payment"
+              attrValue="applePay"
+              attrName="payment"
+              id="radioApplePayment"
+              labelValue="Apple pay"
+            ></app-radio-button>
+
+            <app-radio-button
+              class="order-form__radio-wrapper"
+              formControlName="payment"
+              attrValue="googlePay"
+              id="radioGooglePayment"
+              attrName="payment"
+              labelValue="Google pay"
+            ></app-radio-button>
+
+            <app-radio-button
+              class="order-form__radio-wrapper"
+              formControlName="payment"
+              attrValue="cryptoCurrency"
+              id="radioCryptoPayment"
+              attrName="payment"
+              labelValue="Криптовалюта"
+            ></app-radio-button>
+
+            <app-radio-button
+              class="order-form__radio-wrapper"
+              formControlName="payment"
+              attrValue="checkingAccount"
+              id="radioAccountPayment"
+              attrName="payment"
+              labelValue="С расчетного счета"
+            ></app-radio-button>
+
+            <app-error-field
+              ariaDescribedby="radioApplePayment radioGooglePayment radioCryptoPayment radioAccountPayment"
+              [isRequiredRadio]="!!(isFormSubmitted && paymentControl?.hasError('required'))"
+            ></app-error-field>
+          </fieldset>
+
+          <fieldset class="order-form__fieldset order-form__fieldset-promocode">
+            <legend class="order-form__legend text-color--1 text-uppercase">Промокод</legend>
+
+            <app-promocode-field-container
+              class="order-form__promocode"
+            ></app-promocode-field-container>
+          </fieldset>
+
+          <div class="order-form__total-description total-description">
+            <div class="total-description__wrapper-price wrapper-price">
+              <p class="text-color--1 text-uppercase wrapper-price__paragraph-1">
+                Общая сумма заказа
+              </p>
+
+              <p class="text-color--1 text-uppercase wrapper-price__paragraph-2">
+                {{ totalPrice | currency : 'RUB' }}
+              </p>
+            </div>
+
+            <p class="total-description__paragraph-1">
+              Скидка = {{ totalDiscount | currency : 'RUB' }}
+            </p>
+
+            <p class="total-description__paragraph-2">
+              Доставка = {{ deliveryPrice | currency : 'RUB' }}
+            </p>
+          </div>
+
+          <button class="order-form__btn text-uppercase" appUiButton="1">Оформить заказ</button>
+
+          <p class="order-form__policy policy">
+            Нажимая на кнопку «К Оплате», я даю свое согласие на обработку персональных данных, в
+            соответствии с
+            <a class="policy__link text-color--3" routerLink="#">Политикой конфиденциальности</a>, а
+            так же ознакомлен с условиями оплаты и доставки
+          </p>
+        </form>
+
+        <section class="content__cart cart">
+          <h2 class="cart__title text-color--1 text-uppercase">Ваш заказ</h2>
+
+          <ul class="cart__list list-reset">
+            <li
+              class="cart__item"
+              *ngFor="let cartItem of cart; trackBy: trackByProductId"
+              [@enterLeaveAnimation]
+            >
+              <app-product-item
+                [product]="cartItem.product"
+                [count]="cartItem.count"
+                [minCount]="minProductCount"
+                (countChange)="productCountChange(cartItem.product.id, $event)"
+                (emitDeleteFromCart)="deleteFromCart(cartItem.product.id)"
+              ></app-product-item>
+            </li>
+          </ul>
+
+          <p class="cart__text text-color--1 text-uppercase">
+            Предварительный итог: {{ cartPrice | currency : 'RUB' }}.
+          </p>
+        </section>
+      </div>
+    </div>
+
+    <div class="container">
+      <a
+        *ngIf="!cartProductCount"
+        class="text-uppercase"
+        appUiButton="1"
+        [routerLink]="'/catalog'"
+        routerLinkActive="router-link-active"
+        >В каталог</a
+      >
+    </div>
+  </div>
+
+  <div class="order__bg-bottom"></div>
+</div>

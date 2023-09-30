@@ -1,0 +1,30 @@
+@import 'media';
+
+:host {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow: clip;
+}
+
+.header {
+  top: 0;
+  z-index: 3;
+}
+
+.wrapper-router-outlet {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  &--mt {
+    margin-top: -69px;
+  }
+}
+
+@media (max-width: $ui-xs) {
+  .wrapper-router-outlet--mt {
+    margin-top: -89px;
+  }
+}

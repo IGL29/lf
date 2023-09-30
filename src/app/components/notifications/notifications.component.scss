@@ -1,0 +1,48 @@
+@import 'colors';
+@import 'media';
+
+.notifications {
+  position: fixed;
+  right: 30px;
+  bottom: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  max-height: 100vh;
+  padding: 5px;
+
+  &__wrapper-list {
+    overflow-y: auto;
+  }
+
+  &__notify-item:not(:last-of-type) {
+    margin-bottom: 15px;
+  }
+
+  &__wrapper-btn {
+    margin-top: 15px;
+  }
+
+  &__btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: $ui-md) {
+  .notifications {
+    width: 300px;
+  }
+}
+
+@media (max-width: $ui-sm) {
+  .notifications {
+    width: 250px;
+  }
+}
+
+@media (max-width: $ui-xs) {
+  .notifications {
+    width: 200px;
+  }
+}

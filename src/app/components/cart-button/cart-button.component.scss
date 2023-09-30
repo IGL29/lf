@@ -1,0 +1,72 @@
+@import 'colors';
+
+:host {
+  display: inline-block;
+}
+
+.btn-cart {
+  position: relative;
+  padding: 3px 7px;
+
+  &__count {
+    position: absolute;
+    top: -7px;
+    right: 3px;
+
+    &::after {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 1;
+      width: 100%;
+      padding-top: 100%;
+      background-color: $color-1;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      content: '';
+    }
+  }
+
+  &:hover {
+    .btn-cart__icon {
+      transform-origin: top center;
+      animation: shake-animation 0.3s;
+    }
+  }
+}
+
+@keyframes shake-animation {
+  0% {
+    transform: rotateZ(0deg);
+  }
+
+  50% {
+    transform: rotateZ(8deg);
+  }
+
+  100% {
+    transform: rotateZ(-8deg);
+  }
+}
+
+.count {
+  position: absolute;
+
+  &--opacity {
+    &-0 {
+      opacity: 0;
+    }
+
+    &-1 {
+      opacity: 1;
+    }
+  }
+
+  &__value {
+    position: relative;
+    z-index: 2;
+    padding: 4px;
+    font-size: 11px;
+    transition: opacity 0.3s;
+  }
+}

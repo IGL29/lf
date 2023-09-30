@@ -1,0 +1,77 @@
+<ng-container [ngSwitch]="true">
+  <p role="alert" [id]="ariaDescribedby" class="error error--space-top" *ngSwitchCase="isRequired">
+    Поле обязательно к заполнению
+  </p>
+
+  <p
+    role="alert"
+    [id]="ariaDescribedby"
+    class="error error--space-top"
+    *ngSwitchCase="isRequiredRadio"
+  >
+    Необходимо обязательно выбрать
+  </p>
+
+  <p
+    role="alert"
+    [id]="ariaDescribedby"
+    class="error error--space-top"
+    *ngSwitchCase="isEmpty && !isRequired"
+  >
+    Поле не должно быть пустым
+  </p>
+
+  <p
+    role="alert"
+    [id]="ariaDescribedby"
+    class="error error--space-top"
+    *ngSwitchCase="isInvalidPhone && !isRequired"
+  >
+    Проверьте корректность введенного номера
+  </p>
+
+  <p
+    role="alert"
+    [id]="ariaDescribedby"
+    class="error error--space-top"
+    *ngSwitchCase="isInvalidEmail && !isRequired"
+  >
+    Проверьте корректность введенного email
+  </p>
+
+  <p
+    role="alert"
+    [id]="ariaDescribedby"
+    class="error error--space-top"
+    *ngSwitchCase="isInvalidUNP && !isRequired"
+  >
+    УНП должен состоять из 9 цифр
+  </p>
+
+  <p
+    role="alert"
+    [id]="ariaDescribedby"
+    class="error error--space-top"
+    *ngSwitchCase="isInvalidAccount && !isRequired"
+  >
+    Расчетный счет должен состоять из 20 цифр
+  </p>
+
+  <p
+    role="alert"
+    [id]="ariaDescribedby"
+    class="error error--space-top"
+    *ngSwitchCase="isInvalidBankCode && !isRequired"
+  >
+    Код банка должен состоять из 9 цифр
+  </p>
+
+  <p
+    role="alert"
+    [id]="ariaDescribedby"
+    class="error error--space-top"
+    *ngSwitchCase="isInvalidTime && !isRequired"
+  >
+    Введите корректное время в 24-ом формате
+  </p>
+</ng-container>

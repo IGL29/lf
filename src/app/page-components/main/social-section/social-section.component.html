@@ -1,0 +1,64 @@
+<section class="social-section">
+  <div class="social-section--decor-bg"></div>
+
+  <div class="container social-section__container">
+    <h2 class="visually-hidden">{{ data.title }}</h2>
+
+    <div class="wrapper-1">
+      <div class="wrapper-1__block-image block-image block-image-1"></div>
+      <div class="wrapper-1__block-image block-image block-image-2"></div>
+      <div class="wrapper-1__block-image block-image block-image-3"></div>
+      <div class="wrapper-1__block-image block-image block-image-4"></div>
+    </div>
+
+    <div class="wrapper-2">
+      <div class="wrapper-2__signature signature"></div>
+
+      <div class="wrapper-social-list">
+        <ul class="list-reset wrapper-social-list__social-list social-list">
+          <li class="social-list__item">
+            <a
+              class="social-list__link outline-focus"
+              [href]="data.contacts.social.instagram"
+              aria-label="Инстаграм"
+              ><app-icon
+                class="social-list__icon"
+                width="full"
+                height="full"
+                icon="instagram"
+              ></app-icon
+            ></a>
+          </li>
+
+          <li class="social-list__item">
+            <a
+              class="social-list__link outline-focus"
+              [href]="data.contacts.social.whatsapp"
+              aria-label="Вотсап"
+              ><app-icon
+                class="social-list__icon"
+                width="full"
+                height="full"
+                icon="whatsapp"
+              ></app-icon
+            ></a>
+          </li>
+
+          <li class="social-list__item">
+            <a
+              class="social-list__link outline-focus"
+              [href]="'tel:' + data.contacts.phone"
+              aria-label="Совершить звонок"
+              ><app-icon
+                class="social-list__icon"
+                width="full"
+                height="full"
+                icon="phone"
+              ></app-icon
+            ></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

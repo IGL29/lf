@@ -1,0 +1,17 @@
+<section class="how-to-order">
+  <div class="container how-to-order__container">
+    <h2 class="section-title how-to-order__section-title">
+      {{ data.title | uppercase }}
+    </h2>
+
+    <div class="list-wrapper">
+      <ul class="list-reset steps">
+        <li class="step" *ngFor="let step of data.list">
+          <h3 class="step__title">{{ step.title | uppercase }}</h3>
+
+          <p class="step__descr">{{ step.descr | uppercase }}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

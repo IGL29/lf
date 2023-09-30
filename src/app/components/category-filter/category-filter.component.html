@@ -1,0 +1,12 @@
+<ul class="list-reset list-categories text-uppercase" (click)="handlerSelectCategory($event)">
+  <li class="list-categories__item" *ngFor="let category of categories; let index = index">
+    <button
+      class="text-uppercase outline-focus list-categories__category-btn category-btn"
+      [ngClass]="{ 'category-btn--active': isActiveCategory(category.paramValue) }"
+      [attr.data-param]="category.paramValue"
+      appUiButton="3"
+    >
+      {{ category.title }}
+    </button>
+  </li>
+</ul>

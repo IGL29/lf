@@ -1,0 +1,20 @@
+<div class="notify notify--warn">
+  <button
+    class="notify__btn btn-reset btn-close"
+    (click)="handlerClose()"
+    data-test="buttonClose"
+  ></button>
+
+  <div class="notify__wrapper-content">
+    <h4
+      class="notify__title text-uppercase"
+      [ngClass]="{ 'title--mb': notify.text }"
+      *ngIf="notify.title"
+      data-test="notifyTitle"
+    >
+      {{ notify.title }}
+    </h4>
+
+    <p class="notify__text" data-test="notifyDescr">{{ notify.text }}</p>
+  </div>
+</div>

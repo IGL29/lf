@@ -1,0 +1,15 @@
+<div class="tabs-wrapper">
+  <ul class="tabs-list-btns list-reset">
+    <li class="tabs-item-btn" *ngFor="let tab of tabs">
+      <button
+        class="tabs-item-btn__btn text-uppercase text-color--1 btn-reset"
+        (click)="selectTab(tab)"
+        [attr.data-active]="tab.isActive"
+      >
+        {{ tab.tabTitle }}
+      </button>
+    </li>
+  </ul>
+</div>
+
+<ng-content></ng-content>

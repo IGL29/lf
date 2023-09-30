@@ -1,0 +1,37 @@
+<section class="catalog-section">
+  <div class="catalog-section__text-bg"></div>
+  <div class="catalog-section__text-bg"></div>
+  <div class="catalog-section__decor-color-bg"></div>
+
+  <div class="container catalog-section__container">
+    <h2 class="section-title catalog-section__section-title">
+      {{ data.title | uppercase }}
+    </h2>
+
+    <div>
+      <ul class="list-reset card-list card-list--color-bg">
+        <li class="card-item" *appForEntries="let categoryData of data.cards">
+          <div class="card">
+            <h3 class="card__title">
+              {{ categoryData.value.title | uppercase }}
+            </h3>
+
+            <ul class="card__list">
+              <li class="card__item" *ngFor="let category of categoryData.value.categories">
+                {{ category | uppercase }}
+              </li>
+            </ul>
+
+            <a
+              class="link card__link outline-focus"
+              [routerLink]="[categoryData.value.link.url]"
+              [queryParams]="{ category: categoryData.value.link.params }"
+            >
+              {{ categoryData.value.link.title | uppercase }}
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

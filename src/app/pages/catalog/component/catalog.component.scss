@@ -1,0 +1,297 @@
+@import 'colors';
+@import 'media';
+
+.catalog {
+  position: relative;
+
+  &__container {
+    padding-bottom: 200px;
+  }
+
+  &__bg {
+    &-top {
+      pointer-events: none;
+
+      &::after {
+        position: absolute;
+        top: 191px;
+        right: -180px;
+        z-index: -1;
+        width: 869px;
+        height: 606px;
+        background-image: image-set(
+          url('/assets/images/pages/catalog/pink-flower-bg.webp') type('image/webp'),
+          url('/assets/images/pages/catalog/pink-flower-bg.png')
+        );
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        transform: rotate(355deg);
+        content: '';
+        pointer-events: none;
+      }
+
+      &::before {
+        position: absolute;
+        top: -282px;
+        left: -288px;
+        z-index: -1;
+        width: 875px;
+        height: 900px;
+        background-image: image-set(
+          url('/assets/images/pages/catalog/pink-flower-bg.webp') type('image/webp'),
+          url('/assets/images/pages/catalog/pink-flower-bg.png')
+        );
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        transform: rotateZ(119deg);
+        content: '';
+        pointer-events: none;
+      }
+    }
+
+    &-bottom {
+      &::after {
+        position: absolute;
+        right: -382px;
+        bottom: -175px;
+        z-index: -1;
+        width: 960px;
+        height: 685px;
+        background-image: url('/assets/images/pages/shared/pink-color-bg.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100% 100%;
+        transform: rotate(17deg);
+        content: '';
+        pointer-events: none;
+      }
+
+      &::before {
+        position: absolute;
+        bottom: -375px;
+        left: 302px;
+        z-index: -1;
+        width: 1085px;
+        height: 782px;
+        background-image: url('/assets/images/pages/shared/green-color-bg.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100% 100%;
+        transform: rotate(82deg);
+        content: '';
+        pointer-events: none;
+      }
+    }
+  }
+
+  &::after {
+    position: fixed;
+    top: -207px;
+    right: -405px;
+    z-index: -2;
+    width: 960px;
+    height: 629px;
+    background-image: url('/assets/images/pages/shared/pink-color-bg.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    transform: rotate(17deg);
+    opacity: 0.8;
+    content: '';
+    pointer-events: none;
+  }
+
+  &::before {
+    position: fixed;
+    top: 217px;
+    left: -361px;
+    z-index: -1;
+    width: 1085px;
+    height: 782px;
+    background-image: url('/assets/images/pages/shared/pink-color-bg.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    transform: rotate(116deg);
+    content: '';
+    pointer-events: none;
+  }
+
+  &__breadcrumbs {
+    margin-bottom: 40px;
+  }
+
+  &__hero {
+    display: block;
+    max-width: 920px;
+    margin-bottom: 30px;
+  }
+
+  &__sort-wrapper {
+    display: block;
+    max-width: 261px;
+    margin: 0 0 20px auto;
+  }
+}
+
+.hero {
+  padding: 15px 20px;
+  border-radius: 20px;
+
+  &__section-title {
+    margin-bottom: 20px;
+  }
+
+  &__paragraph {
+    width: 100%;
+    max-width: 835px;
+    margin-bottom: 50px;
+    padding-left: 35%;
+  }
+}
+
+.catalog-title {
+  &__part {
+    &-2 {
+      padding-left: 35%;
+    }
+  }
+}
+
+.wrapper-products {
+  display: flex;
+
+  &__filter-form {
+    position: relative;
+    flex: 0 0 250px;
+    margin-right: 30px;
+
+    &::after {
+      position: absolute;
+      top: -215px;
+      right: -168px;
+      z-index: -1;
+      width: 855px;
+      height: 999px;
+      background-image: url('/assets/images/pages/shared/pink-color-bg.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 100% 100%;
+      transform: rotate(17deg);
+      content: '';
+    }
+
+    &::before {
+      position: absolute;
+      top: 313px;
+      right: -168px;
+      z-index: -1;
+      width: 855px;
+      height: 999px;
+      background-image: url('/assets/images/pages/shared/green-color-bg.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 100% 100%;
+      transform: rotate(17deg);
+      content: '';
+    }
+  }
+
+  &__products-list {
+    flex: 0 1 825px;
+  }
+
+  &__empty-block {
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    text-align: center;
+    transform: translateX(-50%);
+  }
+}
+
+.accordion {
+  margin-bottom: 20px;
+
+  &__btn {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 16px 20px;
+    text-align: start;
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: $ui-md) {
+  .catalog__bg-top {
+    &::before {
+      top: -150px;
+      width: 435px;
+    }
+
+    &::after {
+      width: 400px;
+    }
+  }
+}
+
+@media (max-width: $ui-sm) {
+  .catalog {
+    &__sort-wrapper {
+      max-width: 100%;
+    }
+  }
+
+  .wrapper-products {
+    flex-direction: column;
+
+    &__filter-form {
+      margin-right: 0;
+      margin-bottom: 55px;
+
+      &::before {
+        top: -47px;
+        right: -168px;
+        width: 702px;
+        height: 916px;
+      }
+    }
+  }
+
+  .catalog__hero {
+    margin-bottom: 20px;
+  }
+
+  .hero {
+    padding: 0;
+    background-color: transparent;
+    backdrop-filter: none;
+
+    &__paragraph {
+      padding-left: 20%;
+    }
+  }
+}
+
+@media (max-width: $ui-xs) {
+  .catalog-title {
+    &__part-2 {
+      padding-left: 20%;
+    }
+  }
+
+  .catalog__bg-top {
+    &::after {
+      top: -51px;
+      width: 322px;
+    }
+
+    &::before {
+      top: -170px;
+      left: -65px;
+      width: 160px;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+.reviews {
+  &__review {
+    &:not(:last-child) {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__loader {
+    max-width: 200px;
+    margin: 0 auto;
+  }
+}

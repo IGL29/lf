@@ -1,0 +1,42 @@
+<div class="cart-item block-bottom-underline">
+  <a
+    class="cart-item__img-wrapper-link img-wrapper-link outline-focus"
+    [routerLink]="['/product', product.id]"
+    aria-label="На страницу продукта"
+  >
+    <img class="img-wrapper-link__img" [src]="product.images.main" [alt]="product.title" />
+  </a>
+
+  <div class="cart-item__content">
+    <div class="cart-item__descr">
+      <h3 class="cart-item__title text-uppercase">
+        <a
+          class="cart-item__title-link outline-focus"
+          [routerLink]="['/product', product.id]"
+          aria-label="На страницу продукта"
+        >
+          {{ product.title }}
+        </a>
+      </h3>
+
+      <p class="cart-item__price text-color--1">{{ price | currency : 'RUB' }}</p>
+    </div>
+
+    <div class="cart-item__controls">
+      <app-counter
+        class="cart-item__counter"
+        [value]="count"
+        [min]="minCount"
+        (valueChange)="onChangeCount($event)"
+      ></app-counter>
+
+      <button
+        class="cart-item__btn btn-reset text-uppercase text-color--4 outline-focus"
+        (click)="deleteFromCart(product.id)"
+        aria-label="Удалить товар из корзины"
+      >
+        <span class="text-underline">Удалить</span>
+      </button>
+    </div>
+  </div>
+</div>

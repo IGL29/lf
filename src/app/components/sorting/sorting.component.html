@@ -1,0 +1,24 @@
+<app-dropdown class="sorting" trigger="click" #dropdown>
+  <button
+    class="sorting__sort-btn sort-btn btn-reset text-color--4 text-uppercase text-weight-300 card-background outline-focus"
+    [ngClass]="{
+      'sort-btn--desc': sort === 'desc',
+      'sort-btn--asc': sort === 'asc'
+    }"
+    slot="button"
+  >
+    {{ btnTitle }}
+  </button>
+
+  <ul class="sorting__sorting-list sorting-list list-reset" slot="content">
+    <li class="sorting__item" *ngFor="let option of options; let index = index">
+      <button
+        class="sorting__item-btn item-btn btn-reset text-color--4 text-weight-300 text-uppercase outline-focus"
+        (click)="setSorting(option, index)"
+        [ngClass]="{ 'item-btn--active': activeOptionIndex === index }"
+      >
+        {{ option.title }}
+      </button>
+    </li>
+  </ul>
+</app-dropdown>

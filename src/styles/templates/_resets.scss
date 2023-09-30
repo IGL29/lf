@@ -1,0 +1,20 @@
+%reset-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+%reset-paragraph {
+  margin-top: 0;
+}
+
+%reset-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+%reset-btn {
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}

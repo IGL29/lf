@@ -1,0 +1,32 @@
+<div class="wrapper-range">
+  <div class="wrapper-range__container-range container-range">
+    <div class="container-range__range-track"></div>
+    <label class="visually-hidden" for="rangeFrom">Минимальное значение</label>
+
+    <input
+      #inputRangeFrom
+      class="container-range__range range range--1"
+      type="range"
+      name=""
+      id="rangeFrom"
+      [min]="min"
+      [max]="max"
+      (input)="handlerInputEvent($event)"
+      [value]="value.from"
+    />
+
+    <label class="visually-hidden" for="rangeTo">Максимальное значение</label>
+
+    <input
+      #inputRangeTo
+      class="container-range__range range range--2"
+      type="range"
+      name=""
+      id="rangeTo"
+      [min]="min"
+      [max]="max"
+      (input)="handlerInputEvent($event)"
+      [value]="value.to"
+    />
+  </div>
+</div>

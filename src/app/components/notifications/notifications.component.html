@@ -1,0 +1,40 @@
+<div
+  class="notifications"
+  *ngIf="isNotificationExists"
+  [@fadeAnimation]
+  (click)="handlerHideAll()"
+  (mouseenter)="handlerHideAll()"
+  data-test="wrapper"
+>
+  <div class="notifications__wrapper-list">
+    <ul class="list-reset">
+      <li
+        class="notifications__notify-item notify-item"
+        *ngFor="let notify of notificationsList; trackBy: trackById"
+        [@enterLeaveAnimation]
+      >
+        <app-notify
+          [notify]="notify"
+          (emitClose)="handlerCloseNotify(notify.id)"
+          data-test="notify"
+        ></app-notify>
+      </li>
+    </ul>
+  </div>
+
+  <div
+    class="notifications__wrapper-btn"
+    *ngIf="isVisibleRemoveButton"
+    [@fadeAnimation]
+    [@expandAnimation]
+  >
+    <button
+      class="text-uppercase notifications__btn"
+      appUiButton="3"
+      [@expandAnimation]
+      data-test="buttonHideAll"
+    >
+      скрыть все
+    </button>
+  </div>
+</div>

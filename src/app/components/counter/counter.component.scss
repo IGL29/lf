@@ -1,0 +1,69 @@
+@import 'colors';
+@import 'media';
+
+:host {
+  display: block;
+}
+
+.counter {
+  display: flex;
+  border: 1px solid $color-6;
+  outline: 1px solid transparent;
+  transition: outline-color 0.3s;
+
+  &__counter-btn {
+    color: $color-6;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 5px;
+    color: $color-6;
+    font-weight: 700;
+    font-size: 12px;
+    text-align: center;
+    background-color: transparent;
+  }
+
+  &:hover {
+    outline-color: rgb(67 255 210 / 30%);
+  }
+}
+
+.counter-btn {
+  padding: 12px 15px;
+  font-weight: 700;
+  font-size: 18px;
+  background-color: rgba($color: $color-3, $alpha: 0%);
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+
+  &:hover {
+    background-color: rgba($color: $color-3, $alpha: 20%);
+  }
+
+  &:active {
+    background-color: rgba($color: $color-3, $alpha: 30%);
+  }
+
+  &:disabled {
+    color: rgba($color: $color-3, $alpha: 0%);
+    background-color: rgba($color: $color-3, $alpha: 0%);
+    cursor: default;
+  }
+}
+
+@media (max-width: $ui-xs) {
+  .counter-btn {
+    background-color: rgba($color: $color-3, $alpha: 0%);
+
+    &:hover {
+      background-color: transparent;
+    }
+
+    &:active {
+      background-color: transparent;
+    }
+  }
+}

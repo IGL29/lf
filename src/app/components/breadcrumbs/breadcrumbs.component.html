@@ -1,0 +1,17 @@
+<ul class="breadcrumbs text-uppercase list-reset">
+  <li class="breadcrumbs__breadcrumb-item breadcrumb-item" *ngFor="let linkData of links">
+    <a
+      class="breadcrumb-item__link outline-focus"
+      *ngIf="linkData.url; else text"
+      [routerLink]="linkData.url"
+      [queryParams]="linkData.params"
+      ariaCurrentWhenActive="page"
+      data-test="link"
+      >{{ linkData.title }}</a
+    >
+
+    <ng-template #text>
+      <p class="breadcrumb-item__text" data-test="text">{{ linkData.title }}</p>
+    </ng-template>
+  </li>
+</ul>

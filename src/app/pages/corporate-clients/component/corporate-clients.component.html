@@ -1,0 +1,405 @@
+<div class="corporate-clients corporate-clients--bg">
+  <div class="corporate-clients__decor-color-bg-1"></div>
+  <div class="corporate-clients__decor-color-bg-2"></div>
+  <div class="corporate-clients__decor-color-bg-3"></div>
+
+  <div class="corporate-clients__container container container--pt">
+    <app-breadcrumbs class="corporate-clients__breadcrumbs" [links]="breadcrumbs"></app-breadcrumbs>
+
+    <h1 class="corporate-clients__title text-uppercase">
+      <p class="corporate-clients__title-part-1 section-title">Букеты</p>
+      <p class="corporate-clients__title-part-2">поздравления для</p>
+      <p class="corporate-clients__title-part-3">Ваших работников</p>
+    </h1>
+
+    <p class="corporate-clients__paragraph-1 text-uppercase text-line-height-1-6">
+      Если у Вас большое количество сотрудников (или не очень) и вы устали помнить о каждом их Дне
+      рождении и как чем поздравить, то
+      <span class="text-color--1">мы можем делать это за Вас.</span>
+    </p>
+
+    <div class="corporate-clients__wrapper-text wrapper-text text-line-height-1-6">
+      <p class="wrapper-text__paragraph-1">
+        Одним вариантом сотрудничества является предоставление нам перечня сотрудников с Днями их
+        рождений и мы уже самостоятельно связываемся с каждым, изготавливаем букет либо композицию и
+        доставляем в удобное время сотруднику либо по месту работы либо по месту жительства, так как
+        в настоящее время многие сотрудники продолжают выполнять работу удалённо либо находятся на
+        больничном или в отпуске.
+      </p>
+
+      <p class="wrapper-text__paragraph-2">
+        Другим вариантом сотрудничества является заказ букетов самостоятельно представителем
+        организации за день до нужной даты.
+      </p>
+
+      <p class="wrapper-text__paragraph-3">
+        Так вы <span class="text-color--1">экономите время</span> остальных сотрудников на сбор
+        денег на поиск подарка и доставку его получателю, а также оберегаете себя от риска
+        пропустить кого-либо из важных организации людей, а именно так Вы проявляете заботу и
+        внимание к сотрудникам для того, чтобы и к делам Вашей организации они относились со всей
+        внимательностью и также не пропускали важные дни.
+      </p>
+    </div>
+
+    <p class="corporate-clients__paragraph-2 text-uppercase">
+      Букеты могут изготавливаться в фирменном цвете организации и есть возможность делать
+      поздравления на Вашей фирменной открытке, которую мы можем изготовить сами.
+    </p>
+
+    <p class="corporate-clients__paragraph-3 text-color--1 text-uppercase">
+      Стоимость одного букета не менее 60 рублей.
+    </p>
+
+    <table class="corporate-clients__table table table--bg">
+      <tr class="table__tr">
+        <th class="table__th card-background text-color--1">Количество заявок в месяц</th>
+
+        <th class="table__th card-background text-color--1">Приятные бонусы</th>
+      </tr>
+
+      <tr class="table__tr">
+        <td class="table__td text--center card-background">1-2</td>
+
+        <td class="table__td card-background">
+          Стоимость одной доставки по Минску – 10 рублей, за пределы МКАД – от 20 рублей
+        </td>
+      </tr>
+
+      <tr class="table__tr">
+        <td class="table__td text--center card-background">3-10</td>
+
+        <td class="table__td card-background">
+          Доставка бесплатно Букет-подарок руководителю в его День рождения
+        </td>
+      </tr>
+
+      <tr class="table__tr">
+        <td class="table__td text--center card-background">Более 10</td>
+
+        <td class="table__td card-background">
+          Доставка бесплатно Букет-подарок руководителю в его День рождения Праздничная ель перед
+          Новым годом
+        </td>
+      </tr>
+    </table>
+
+    <div class="corporate-clients__wrapper-list wrapper-list">
+      <h2 class="wrapper-list__title text-color--1 text-uppercase">этапы работы:</h2>
+
+      <ul class="wrapper-list__list list-reset text-uppercase">
+        <li class="wrapper-list__item">Заполнение заявки</li>
+        <li class="wrapper-list__item">Подписание договора</li>
+        <li class="wrapper-list__item">Вручение цветов</li>
+        <li class="wrapper-list__item">Отчет о доставленных заказах</li>
+        <li class="wrapper-list__item">оплата</li>
+      </ul>
+    </div>
+
+    <p class="corporate-clients__paragraph-4 text-uppercase">
+      Если у Вас единичный заказ, то можете выбрать букет в каталоге либо заказать индивидуальный
+      букет и указать его стоимость, а при оформлении заказа в корзине указать, что оплата будет
+      производиться с расчётного счёта организации.
+    </p>
+
+    <form
+      class="corporate-clients__request-form request-form"
+      [formGroup]="corporateFormGroup"
+      (ngSubmit)="handlerFormSubmit()"
+    >
+      <h2 class="request-form__title text-color--1 text-uppercase">Заполните заявку:</h2>
+
+      <div class="request-form__wrapper-fields wrapper-fields">
+        <div class="request-form__wrapper-field wrapper-field">
+          <label class="wrapper-field__label" for="">Наименование организации</label>
+
+          <input
+            class="field field--default"
+            [ngClass]="{
+              'field--not-empty': corporateNameControl?.value,
+              'field--error':
+                (isFormSubmitted || corporateNameControl?.touched) &&
+                (!corporateNameControl?.value || corporateNameControl?.hasError('empty'))
+            }"
+            type="text"
+            placeholder="Введите наименование вашей организации"
+            formControlName="corporateName"
+          />
+
+          <app-error-field
+            [isEmpty]="
+              !!(
+                (isFormSubmitted || corporateNameControl?.touched) &&
+                corporateNameControl?.hasError('empty')
+              )
+            "
+            [isRequired]="
+              !!((isFormSubmitted || corporateNameControl?.touched) && !corporateNameControl?.value)
+            "
+          ></app-error-field>
+        </div>
+
+        <div class="request-form__wrapper-field wrapper-field">
+          <label class="wrapper-field__label" for="">Почтовый адрес</label>
+
+          <input
+            class="field field--default"
+            [ngClass]="{
+              'field--not-empty': postalAddressControl?.value,
+              'field--error':
+                (isFormSubmitted || postalAddressControl?.touched) &&
+                (!postalAddressControl?.value || postalAddressControl?.hasError('empty'))
+            }"
+            type="text"
+            placeholder="Введите почтовый адрес"
+            formControlName="postalAddress"
+          />
+
+          <app-error-field
+            [isEmpty]="
+              !!(
+                (isFormSubmitted || postalAddressControl?.touched) &&
+                postalAddressControl?.hasError('empty')
+              )
+            "
+            [isRequired]="
+              !!((isFormSubmitted || postalAddressControl?.touched) && !postalAddressControl?.value)
+            "
+          ></app-error-field>
+        </div>
+
+        <div class="request-form__wrapper-field wrapper-field">
+          <label class="wrapper-field__label" for="">Контактное лицо</label>
+
+          <input
+            class="field field--default"
+            [ngClass]="{
+              'field--not-empty': nameControl?.value,
+              'field--error':
+                (isFormSubmitted || nameControl?.touched) &&
+                (!nameControl?.value || nameControl?.hasError('empty'))
+            }"
+            type="text"
+            placeholder="Введите имя контактного лица"
+            formControlName="name"
+          />
+
+          <app-error-field
+            [isEmpty]="
+              !!((isFormSubmitted || nameControl?.touched) && nameControl?.hasError('empty'))
+            "
+            [isRequired]="!!((isFormSubmitted || nameControl?.touched) && !nameControl?.value)"
+          ></app-error-field>
+        </div>
+
+        <div class="request-form__wrapper-field wrapper-field">
+          <label class="wrapper-field__label" for="">Контактный номер телефона</label>
+
+          <input
+            class="field field--default"
+            [ngClass]="{
+              'field--not-empty': phoneControl?.value,
+              'field--error':
+                (isFormSubmitted || phoneControl?.touched) &&
+                (!phoneControl?.value || phoneControl?.hasError('empty'))
+            }"
+            type="text"
+            placeholder="+7 (977) 777-77-77"
+            formControlName="phone"
+            mask="+0 (000) 000-00-00"
+          />
+
+          <app-error-field
+            [isInvalidPhone]="
+              !!((isFormSubmitted || phoneControl?.touched) && phoneControl?.hasError('minlength'))
+            "
+            [isRequired]="!!((isFormSubmitted || phoneControl?.touched) && !phoneControl?.value)"
+          ></app-error-field>
+        </div>
+
+        <div class="request-form__wrapper-field wrapper-field">
+          <label class="wrapper-field__label" for=""
+            >Стоимость букета сотруднику (если разная – указать)</label
+          >
+
+          <input
+            class="field field--default"
+            [ngClass]="{
+              'field--not-empty': bouquetPriceControl?.value,
+              'field--error':
+                (isFormSubmitted || bouquetPriceControl?.touched) &&
+                (!bouquetPriceControl?.value || bouquetPriceControl?.hasError('empty'))
+            }"
+            type="text"
+            placeholder="Укажите стоимость букета сотруднику"
+            formControlName="bouquetPrice"
+          />
+
+          <app-error-field
+            [isEmpty]="
+              !!(
+                (isFormSubmitted || bouquetPriceControl?.touched) &&
+                bouquetPriceControl?.hasError('empty')
+              )
+            "
+            [isRequired]="
+              !!((isFormSubmitted || bouquetPriceControl?.touched) && !bouquetPriceControl?.value)
+            "
+          ></app-error-field>
+        </div>
+
+        <div class="request-form__wrapper-field wrapper-field">
+          <label class="wrapper-field__label" for="">Адрес электронной почты</label>
+
+          <input
+            class="field field--default"
+            [ngClass]="{
+              'field--not-empty': emailControl?.value,
+              'field--error':
+                (isFormSubmitted || emailControl?.touched) &&
+                (!emailControl?.value || emailControl?.hasError('email'))
+            }"
+            type="text"
+            placeholder="Укажите ваш адрес электронной почты"
+            formControlName="email"
+          />
+
+          <app-error-field
+            [isInvalidEmail]="
+              !!((isFormSubmitted || emailControl?.touched) && emailControl?.hasError('email'))
+            "
+            [isRequired]="!!((isFormSubmitted || emailControl?.touched) && !emailControl?.value)"
+          ></app-error-field>
+        </div>
+
+        <div class="request-form__wrapper-field wrapper-field">
+          <label class="wrapper-field__label" for="">УНП</label>
+
+          <input
+            class="field field--default"
+            [ngClass]="{
+              'field--not-empty': unpControl?.value,
+              'field--error':
+                (isFormSubmitted || unpControl?.touched) &&
+                (!unpControl?.value || unpControl?.hasError('minlength'))
+            }"
+            type="text"
+            placeholder="УНП"
+            formControlName="unp"
+            mask="000000000"
+          />
+
+          <app-error-field
+            [isInvalidUNP]="
+              !!((isFormSubmitted || unpControl?.touched) && unpControl?.hasError('minlength'))
+            "
+            [isRequired]="!!((isFormSubmitted || unpControl?.touched) && !unpControl?.value)"
+          ></app-error-field>
+        </div>
+
+        <div class="request-form__wrapper-field wrapper-field">
+          <label class="wrapper-field__label" for="">Расчетный счет</label>
+
+          <input
+            class="field field--default"
+            [ngClass]="{
+              'field--not-empty': paymentAccountControl?.value,
+              'field--error':
+                (isFormSubmitted || paymentAccountControl?.touched) &&
+                (!paymentAccountControl?.value || paymentAccountControl?.hasError('minlength'))
+            }"
+            type="text"
+            placeholder="Введите номер расчетного счета"
+            formControlName="paymentAccount"
+            mask="00000000000000000000"
+          />
+
+          <app-error-field
+            [isInvalidAccount]="
+              !!(
+                (isFormSubmitted || paymentAccountControl?.touched) &&
+                paymentAccountControl?.hasError('minlength')
+              )
+            "
+            [isRequired]="
+              !!(
+                (isFormSubmitted || paymentAccountControl?.touched) &&
+                !paymentAccountControl?.value
+              )
+            "
+          ></app-error-field>
+        </div>
+
+        <div class="request-form__wrapper-field wrapper-field">
+          <label class="wrapper-field__label" for="">Код банка</label>
+
+          <input
+            class="field field--default"
+            [ngClass]="{
+              'field--not-empty': bankCodeControl?.value,
+              'field--error':
+                (isFormSubmitted || bankCodeControl?.touched) &&
+                (!bankCodeControl?.value || bankCodeControl?.hasError('minlength'))
+            }"
+            type="text"
+            placeholder="Код банка"
+            formControlName="bankCode"
+            mask="000000000"
+          />
+
+          <app-error-field
+            [isInvalidBankCode]="
+              !!(
+                (isFormSubmitted || bankCodeControl?.touched) &&
+                bankCodeControl?.hasError('minlength')
+              )
+            "
+            [isRequired]="
+              !!((isFormSubmitted || bankCodeControl?.touched) && !bankCodeControl?.value)
+            "
+          ></app-error-field>
+        </div>
+
+        <div class="request-form__wrapper-field wrapper-field">
+          <label class="wrapper-field__label" for=""
+            >Предполагаемое количество заявок в месяц</label
+          >
+
+          <input
+            class="field field--default"
+            [ngClass]="{
+              'field--not-empty': numberRequestControl?.value,
+              'field--error':
+                (isFormSubmitted || numberRequestControl?.touched) &&
+                (!numberRequestControl?.value || numberRequestControl?.hasError('empty'))
+            }"
+            type="text"
+            placeholder="Введите предполагаемое количество заявок в месяц"
+            formControlName="numberRequestsMonth"
+          />
+
+          <app-error-field
+            [isEmpty]="
+              !!(
+                (isFormSubmitted || numberRequestControl?.touched) &&
+                numberRequestControl?.hasError('empty')
+              )
+            "
+            [isRequired]="
+              !!((isFormSubmitted || numberRequestControl?.touched) && !numberRequestControl?.value)
+            "
+          ></app-error-field>
+        </div>
+      </div>
+
+      <app-loader *ngIf="isLoading" class="request-form__loader" text="Отправляем..."></app-loader>
+
+      <button class="request-form__btn text-uppercase" appUiButton="1">Отправить</button>
+
+      <p class="request-form__paragraph">
+        Нажимая на кнопку «Отправить», я даю свое согласие на обработку персональных данных, в
+        соответствии с
+        <a class="request-form__link outline-focus" routerLink="#">Политикой конфиденциальности</a>
+      </p>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,92 @@
+<header
+  class="header header--bg-black"
+  [ngClass]="{ 'header--bg-transparent': isHeaderTransparent }"
+>
+  <div class="container header__container">
+    <button
+      class="btn-reset btn-burger header__btn-burger outline-focus"
+      aria-label="Открыть боковое меню"
+      (click)="emitSwitchBurgerMenu()"
+      [attr.aria-expanded]="isBurgerMenuOpen"
+      #burgerMenuBtn
+    >
+      <div class="btn-burger__line-pivot"></div>
+    </button>
+
+    <a
+      class="header__logo-link logo-link outline-focus"
+      aria-label="На главную"
+      routerLink="/"
+      ngClass="{'logo-link--main': isMainRoute}"
+    >
+      <app-icon class="logo-link__icon" icon="logo"></app-icon>
+
+      <p *ngIf="!isMainRoute" class="logo-link__text">LOVER FLOWER</p>
+    </a>
+
+    <nav class="nav nav--mr" aria-label="Навигация по сайту">
+      <ul class="nav__nav-list list-reset nav-list nav-list--flex nav-list--justify-between">
+        <li class="nav-list__item nav-list__item--mr" *appForEntries="let linkData of navData">
+          <app-dropdown
+            *ngIf="linkData.name === 'catalog'; else linkWithoutDropdown"
+            target="hover"
+            position="right"
+            #dropdown
+            (click)="closeDropdown($event)"
+          >
+            <a
+              class="outline-focus nav-link"
+              slot="button"
+              [routerLink]="linkData.value.url"
+              routerLinkActive="text-color--1"
+              ariaCurrentWhenActive="page"
+            >
+              {{ linkData.value.title }}
+            </a>
+
+            <div slot="content" class="menu-wrapper">
+              <ul class="list-reset menu-wrapper__list">
+                <li class="menu-wrapper__item" *ngFor="let category of categoriesData">
+                  <a
+                    class="menu-wrapper__link menu-link"
+                    [queryParams]="{ category: category.paramValue }"
+                    [routerLink]="['/catalog']"
+                    routerLinkActive="text-color--1"
+                  >
+                    {{ category.title }}
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </app-dropdown>
+
+          <ng-template #linkWithoutDropdown>
+            <a
+              class="outline-focus nav__nav-link nav-link"
+              [routerLink]="linkData.value.url"
+              routerLinkActive="text-color--1"
+              ariaCurrentWhenActive="page"
+            >
+              {{ linkData.value.title | uppercase }}
+            </a>
+          </ng-template>
+        </li>
+      </ul>
+    </nav>
+
+    <app-search-form-container class="container__form-search"></app-search-form-container>
+
+    <a
+      aria-label="Позвонить нам"
+      class="header__phone text-color--1 outline-focus"
+      href="tel:{{ phoneNumber }}"
+      >{{ phoneNumber | mask : '+000 (00) 000-00-00' }}</a
+    >
+
+    <app-cart-button
+      class="header__btn-cart"
+      [count]="countInCart"
+      (click)="emitSwitchCartMenu()"
+    ></app-cart-button>
+  </div>
+</header>
